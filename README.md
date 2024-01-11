@@ -20,7 +20,7 @@ The following folders are mounted in each docker container and can be used to sh
 | `[REPO]/data/mentions/`    | `/data/mentions/`     |
 | `[REPO]/data/coreference/` | `/data/coreference/`  |
 | `[REPO]/data/dblp-export/` | `/data/dblp-export/`  |
-| `[REPO]/data/esis-export/` | `/data/esis-export/`  |
+| `[REPO]/data/gesis-export/` | `/data/gesis-export/`  |
 
 
 ## How to Run
