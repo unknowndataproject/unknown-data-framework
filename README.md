@@ -14,10 +14,10 @@ If you want to run the whole pipeline, use the following command from within the
 docker compose up --build
 ```
 
-That command will run all components in the order `crawler` -> `mentions` -> `coreference` -> `dblp-export`. Each component will only start to run when the previous one finished successfully. 
+That command will run all components in the order `crawler` -> `mentions` -> `coreference` -> (`dblp-export` & `gesis-export`). Each component will only start to run when the previous one finished successfully. 
 
 ### Only One Component
-If you only want to run one component of the pipeline, use the following command from within the project root folder and replace `[COMPONENT]` by the desired component name (`crawler`, `mentions`, `coreference`, `dblp-export`):
+If you only want to run one component of the pipeline, use the following command from within the project root folder and replace `[COMPONENT]` by the desired component name (`crawler`, `mentions`, `coreference`, `dblp-export`, `gesis-export`):
 
 ```bash
 docker compose up [COMPONENT] --build

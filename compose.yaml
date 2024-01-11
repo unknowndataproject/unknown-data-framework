@@ -7,6 +7,7 @@ services:
       - ./output/mentions:/output/mentions
       - ./output/coreference:/output/coreference
       - ./output/dblp-export:/output/dblp-export
+      - ./output/dblp-export:/output/gesis-export
 
   mentions:
     build: ./mentions/
@@ -15,6 +16,7 @@ services:
       - ./output/mentions:/output/mentions
       - ./output/coreference:/output/coreference
       - ./output/dblp-export:/output/dblp-export
+      - ./output/dblp-export:/output/gesis-export
     depends_on:
       crawler:
         condition: service_completed_successfully
@@ -26,6 +28,7 @@ services:
       - ./output/mentions:/output/mentions
       - ./output/coreference:/output/coreference
       - ./output/dblp-export:/output/dblp-export
+      - ./output/dblp-export:/output/gesis-export
     depends_on:
       mentions:
         condition: service_completed_successfully
@@ -37,6 +40,19 @@ services:
       - ./output/mentions:/output/mentions
       - ./output/coreference:/output/coreference
       - ./output/dblp-export:/output/dblp-export
+      - ./output/dblp-export:/output/gesis-export
+    depends_on:
+      coreference:
+        condition: service_completed_successfully
+
+  gesis-export:
+    build: ./gesis-export/
+    volumes:
+      - ./output/crawler:/output/crawler
+      - ./output/mentions:/output/mentions
+      - ./output/coreference:/output/coreference
+      - ./output/dblp-export:/output/dblp-export
+      - ./output/dblp-export:/output/gesis-export
     depends_on:
       coreference:
         condition: service_completed_successfully
