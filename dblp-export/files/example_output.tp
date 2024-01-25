@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tp SYSTEM "tp.dtd">
+<tp debug="false">
+    <metadata>
+        <history>
+            <log timestamp="2024-01-25T12:00:00.000000000Z" source="unknown-data-framework">This is just an example</log>
+        </history>
+    </metadata>
+    <generic type="data">
+        <title>Zenodo</title>
+        <publisher>Zenodo</publisher>
+        <year>2023</year>
+        <toc>
+            <publication type="dataset">
+                <author>
+                    <name native="Knopp, Benedikt">Benedikt Knopp</name>
+                    <affiliation>Chair of Process and Data Science, RWTH Aachen</affiliation>
+                    <orcid>0000-0002-7762-9486</orcid>
+                </author>
+                <author>
+                    <name native="Wil M.P. van der Aalst">Wil M. P. van der Aalst</name>
+                    <affiliation>Chair of Process and Data Science, RWTH Aachen</affiliation>
+                    <orcid>0000-0002-0955-6940</orcid>
+                </author>
+                <title>Order Management Object-centric Event Log in OCEL 2.0 Standard.</title>
+                <month>September</month>
+                <year>2023</year>
+                <url type="oa">https://doi.org/10.5281/zenodo.8337464</url>
+                <relation type="versionOf" label="Version 1" sort="0">https://doi.org/10.5281/zenodo.8337463</relation>
+            </publication>
+            <publication type="software">
+                <author>
+                    <name>Ludwig Schmid</name>
+                    <affiliation>Technical University of Munich</affiliation>
+                    <orcid>0000-0002-4246-8125</orcid>
+                </author>
+                <author>
+                    <name>David F. Locher</name>
+                    <affiliation>Forschungszentrum Jülich, RWTH Aachen University</affiliation>
+                    <orcid>0009-0001-0180-4225</orcid>
+                </author>
+                <author>
+                    <name>Sebastian Blatt</name>
+                    <affiliation>Max Planck Institute of Quantum Optics, Munich Center for Quantum Science and Technology</affiliation>
+                    <orcid>0000-0003-2466-9967</orcid>
+                </author>
+                <author>
+                    <name>Johannes Zeiher</name>
+                    <affiliation>Max Planck Institute of Quantum Optics, Munich Center for Quantum Science and Technology</affiliation>
+                    <orcid>0000-0002-8466-1863</orcid>
+                </author>
+                <author>
+                    <name>Markus Müller</name>
+                    <affiliation>Forschungszentrum Jülich, RWTH Aachen University</affiliation>
+                    <orcid>0000-0002-2813-3097</orcid>
+                </author>
+                <author>
+                    <name>Robert Wille</name>
+                    <affiliation>Technical University of Munich</affiliation>
+                    <orcid>0000-0002-4993-7860</orcid>
+                </author>
+                <author>
+                    <name>Manuel Rispler</name>
+                    <affiliation>Forschungszentrum Jülich, RWTH Aachen University</affiliation>
+                </author>
+                <title>Evaluation data for "Computational Capabilities and Compiler Development for Neutral Atom Quantum Processors - Connecting Tool Developers and Hardware Experts".</title>
+                <month>September</month>
+                <year>2023</year>
+                <url type="oa">https://doi.org/10.5281/zenodo.8347714</url>
+                <relation type="versionOf" label="Version 1" sort="0">https://doi.org/10.5281/zenodo.8347713</relation>
+            </publication>
+        </toc>
+    </generic>
+</tp>

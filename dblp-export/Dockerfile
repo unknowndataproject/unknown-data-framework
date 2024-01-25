@@ -10,4 +10,4 @@ RUN apt update && \
 # Copies everything in the local folder `./dblp-export/` into the container folder `/app`
 COPY . . 
 
-CMD ["python3", "./src/hello.py"]
+CMD ["python3", "./src/dblp-export.py"]
