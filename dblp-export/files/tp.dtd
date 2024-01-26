@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<!-- last modified: 2023/08/03-->
+ 
+<!-- Root Element -->
+<!ELEMENT tp (metadata, (proceeding | journal | generic)*) >
+<!ATTLIST tp debug (true | false) "false" >
+ 
+ 
+<!-- Metadata Section -->
+<!ELEMENT metadata (warning*, metainfo?, history?) >
+<!ELEMENT warning (#PCDATA) >
+<!ELEMENT metainfo (#PCDATA) >
+<!ELEMENT history (log)+ >
+<!ELEMENT log (#PCDATA) >
+<!ATTLIST log timestamp CDATA #REQUIRED >
+<!ATTLIST log source CDATA #REQUIRED >
+ 
+ 
+<!-- Supported Record Types -->
+<!ENTITY % defaultfields "editor*, title?, short?, publisher?, school?, month?, year?, series?, pages?, url*, date*" >
+<!ELEMENT proceeding (%defaultfields;, location, isbn*, bhtkey?, toc) >
+<!ATTLIST proceeding key CDATA #IMPLIED >
+<!ELEMENT journal (%defaultfields;, issn*, bhtkey?, volume+) >
+<!ATTLIST journal key CDATA #IMPLIED >
+<!ELEMENT generic (%defaultfields;, isbn*, bhtkey?, toc) >
+<!ATTLIST generic key CDATA #IMPLIED >
+<!ATTLIST generic type (book | phdthesis | mastersthesis | data) #REQUIRED >
+ 
+ 
+<!--  Title Format -->
+<!ENTITY % titlecontents "#PCDATA | sub | sup | i | tt | ref" >
+<!ELEMENT title (%titlecontents;)* >
+<!ELEMENT sup (%titlecontents;)* >
+<!ELEMENT sub (%titlecontents;)* >
+<!ELEMENT i (%titlecontents;)* >
+<!ELEMENT tt (%titlecontents;)* >
+<!ELEMENT ref (#PCDATA) >
+<!ATTLIST ref href CDATA #REQUIRED >
+ 
+ 
+<!-- Section Titles -->
+<!ELEMENT section (publication | text | subsection)+ >
+<!ATTLIST section title CDATA #REQUIRED >
+<!ELEMENT subsection (publication | text | subsubsection)+ >
+<!ATTLIST subsection title CDATA #REQUIRED >
+<!ELEMENT subsubsection (publication | text)+ >
+<!ATTLIST subsubsection title CDATA #REQUIRED >
+ 
+ 
+<!-- Volumes and Issues -->
+<!ELEMENT volume (number, %defaultfields;, (issue+ | toc)) >
+<!ATTLIST volume uuid ID #IMPLIED >
+<!ELEMENT issue (number, %defaultfields;, toc) >
+<!ATTLIST issue uuid ID #IMPLIED >
+ 
+ 
+<!-- Table of Contents -->
+<!ELEMENT toc (publication | text | section)+ >
+ 
+ 
+<!-- Arbitrary text in table of contents -->
+<!ELEMENT text (#PCDATA) >
+ 
+ 
+<!-- Publication Record -->
+<!ELEMENT publication (editor*, author*, title, month?, year?, pages?, (url | date | datasource | isbn | issn | relation | number | chapter | note)*) >
+<!ATTLIST publication type CDATA #IMPLIED >
+<!ATTLIST publication warning CDATA #IMPLIED >
+<!ATTLIST publication uuid ID #IMPLIED >
+ 
+ 
+<!-- Person Record -->
+<!ELEMENT author (name, affiliation*, email*, url*, orcid?) >
+<!ATTLIST author warning CDATA #IMPLIED >
+<!ATTLIST author uuid ID #IMPLIED >
+ 
+<!ELEMENT editor (name, affiliation*, email*, url*, orcid?) >
+<!ATTLIST editor warning CDATA #IMPLIED >
+<!ATTLIST editor uuid ID #IMPLIED >
+ 
+<!ELEMENT name (#PCDATA)>
+<!ATTLIST name native CDATA #IMPLIED >
+<!ATTLIST name original CDATA #IMPLIED >
+ 
+<!ELEMENT orcid (#PCDATA) >
+<!ELEMENT affiliation (#PCDATA) >
+<!ELEMENT email (#PCDATA) >
+<!ATTLIST email domain CDATA #REQUIRED >
+ 
+ 
+<!-- Other Data Types -->
+<!ELEMENT acronym (#PCDATA) >
+<!ELEMENT chapter (#PCDATA) >
+<!ELEMENT datasource (#PCDATA) >
+<!ATTLIST datasource type NMTOKEN #REQUIRED >
+<!ATTLIST datasource date CDATA #REQUIRED >
+<!ELEMENT date (#PCDATA) >
+<!ATTLIST date type (created | modified | print | online | onsite) #REQUIRED >
+<!ELEMENT isbn (#PCDATA) >
+<!ATTLIST isbn type (print | online) #IMPLIED >
+<!ELEMENT issn (#PCDATA) >
+<!ATTLIST issn type (print | online) #IMPLIED >
+<!ELEMENT key (#PCDATA) >
+<!ELEMENT short (#PCDATA) >
+<!ELEMENT location (#PCDATA) >
+<!ELEMENT month (#PCDATA) >
+<!ELEMENT note (#PCDATA) >
+<!ATTLIST note type NMTOKEN #IMPLIED >
+<!ELEMENT number (#PCDATA) >
+<!ELEMENT pages (#PCDATA) >
+<!ATTLIST pages type (print | online) #IMPLIED >
+<!ELEMENT publisher (#PCDATA) >
+<!ELEMENT relation (#PCDATA) >
+<!ATTLIST relation type NMTOKEN #REQUIRED >
+<!ATTLIST relation label CDATA #IMPLIED >
+<!ATTLIST relation sort NMTOKEN #IMPLIED >
+<!ELEMENT school (#PCDATA) >
+<!ELEMENT series (#PCDATA) >
+<!ATTLIST series key NMTOKEN #IMPLIED>
+<!ATTLIST series number NMTOKEN #IMPLIED>
+<!ELEMENT url (#PCDATA) >
+<!ATTLIST url type NMTOKENS #IMPLIED >
+<!ELEMENT year (#PCDATA) >
+<!ELEMENT bhtkey (#PCDATA) >
