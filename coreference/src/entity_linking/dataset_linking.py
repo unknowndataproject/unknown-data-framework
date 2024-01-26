@@ -24,7 +24,7 @@ def dataset_linking(extraction_input, dataset_df):
 
 
             candid_ents = []
-            for idx, (dataset_name, dataset_homepage) in enumerate(zip(dataset_df['name'], dataset_df['homepage'])):
+            for idx, (dataset_name, dataset_homepage, dataset_date) in enumerate(zip(dataset_df['name'], dataset_df['homepage'],dataset_df['introduced_date'])):
                 # find candidates
                 if dataset_name.lower() in ee['dataset_mention'].lower():
                     score = nlp(dataset_name.lower()).similarity(nlp(ee['dataset_mention'].lower()))
@@ -44,8 +44,11 @@ def dataset_linking(extraction_input, dataset_df):
                     res[cnt] = {
                     'dataset_entity':dataset_name, 
                     'dataset_homepage': dataset_homepage,
+                    'dataset_author': '',
+                    'dataset_introduced_date': dataset_date,
                     'matched_mention': ee['dataset_mention'], 
-                    'matched_context': ee['dataset_context']
+                    'matched_context': ee['dataset_context'],
+                    'mentioned_in_paper': ee['mentioned_in_paper'], 
                     }
             if not matched:
                 # print('Mention:', ee['dataset_mention'],'\nContext:', ee['dataset_context'], '\n')
