@@ -2,6 +2,7 @@ FROM ubuntu
 
 # Changes working directory to `/app` within docker image
 WORKDIR /app
+# VOLUME /app
 
 # Installs python3
 RUN apt update && \
