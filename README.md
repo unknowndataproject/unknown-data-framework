@@ -36,10 +36,10 @@ docker compose up --build
 That command will run all components in the order `crawler` -> `mentions` -> `coreference` -> (`dblp-export` & `gesis-export`). Each component will only start to run when the previous one finished successfully. 
 
 ### Only One Component
-If you only want to run one component of the pipeline, use the following command from within the project root folder and replace `[COMPONENT]` by the desired component name (`crawler`, `mentions`, `coreference`, `dblp-export`, `gesis-export`):
+If you only want to run one component of the pipeline, use the following command from within the project root folder and replace `[COMPONENT]` by the desired component name (`crawler`, `mentions`, `coreference`, `dblp-export`, `gesis-export`). The `--no-deps` flag ensures that the upstream dependent containers are not executed before the choosen component. Instead only the choosen component is run.  
 
 ```bash
-docker compose up [COMPONENT] --build
+docker compose up --build --no-deps [COMPONENT]
 ```
 
 ## Development
