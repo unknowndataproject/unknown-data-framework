@@ -1,5 +1,4 @@
 services:
-
   crawler:
     build: ./crawler/
     volumes:
@@ -9,17 +8,22 @@ services:
       - ./data/dblp-export:/data/dblp-export
       - ./data/gesis-export:/data/gesis-export
 
+  grobid-service:
+    image: grobid/grobid:0.8.0
+    restart: "unless-stopped"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://grobid-service:8070/api/isalive"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
   mentions:
-    build: ./mentions/
+    build: ./mentions
     volumes:
-      - ./data/crawler:/data/crawler
-      - ./data/mentions:/data/mentions
-      - ./data/coreference:/data/coreference
-      - ./data/dblp-export:/data/dblp-export
-      - ./data/gesis-export:/data/gesis-export
+      - ./data/mentions:/app/src/resources/data
     depends_on:
-      crawler:
-        condition: service_completed_successfully
+      grobid-service:
+        condition: service_healthy
 
   coreference:
     build: ./coreference/
