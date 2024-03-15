@@ -8,10 +8,29 @@ and if not found apply NLp model
 The model first copy a list of 10 pdfs to its local directory and work on them and when it is does it remove them and copy another until it hanldes all pdfs.
 '''
 import os
+import shutil
+from pathlib import Path
+
 import utils
 import heurstics_search as hs
 import using_nlp_model as unlp
 from time import perf_counter
+
+
+# Copy the entire directory tree from source to destination
+#directory_path = Path('/data/mentions/in_pdfs')
+#directory_path.mkdir()
+
+
+shutil.copytree("/app/src/resources/data/in_pdfs", "/data/mentions/in_pdfs",dirs_exist_ok=True)
+
+directory_path = Path('/data/mentions/out_tei')
+directory_path.mkdir(exist_ok=True)
+
+directory_path = Path('/data/mentions/results')
+directory_path.mkdir(exist_ok=True)
+
+
 
 #load cofig dictionary
 config = utils.read_config("config.yaml")
@@ -72,6 +91,8 @@ for i in range(0,len(pdf_list), batch_size): #math.ceil(len(pdf_list)/batch_size
     heu_selected_sents = {}
     sent_excluded_by_heuristics = {}
     for tei_file,sentences in tei_dict.items():
+        if tei_file  not in processed_tei_files_list:
+            continue
         _, matched_sent_ids = hs.search_patterns_in_tei_file(sentences)
         heu_selected_sents[tei_file] = matched_sent_ids
     end_time = perf_counter()
@@ -82,6 +103,8 @@ for i in range(0,len(pdf_list), batch_size): #math.ceil(len(pdf_list)/batch_size
     #prepare sentences for nlp model by
     nlp_input = {}
     for tei_file,sentences in tei_dict.items():
+        if tei_file not in processed_tei_files_list:
+            continue
         #load the sentences in which a heuristic pattern is found
         candidate_sentences = heu_selected_sents[tei_file]
         tmp_nlp_sents = []
@@ -95,7 +118,7 @@ for i in range(0,len(pdf_list), batch_size): #math.ceil(len(pdf_list)/batch_size
     nlp_results = {}
     for tei_file,sentences in nlp_input.items(): #tqdm(nlp_input.items(),total = len(nlp_input.items()), desc="processing: "):
         #skip files that do not have sentences selected by the heuristic
-        if len(sentences) == 0:
+        if tei_file  not in processed_tei_files_list or len(sentences)==0:
             continue
         
         log_printer(f"Dataset mentions found in file: {tei_file[:-8]}.pdf\n")
@@ -103,24 +126,29 @@ for i in range(0,len(pdf_list), batch_size): #math.ceil(len(pdf_list)/batch_size
         #log_printer("Number of sentences per file for which a known dataset was matched: ")
         log_printer(f"Number of sentences selected by heuristics: {len(heu_selected_sents[tei_file])}\n")
 
-        f = open(f"{config.extraction_dir}/{tei_file[:-8]}.txt","w",encoding="utf-8")
+        try:
+            file_path = f"{config.extraction_dir}/{tei_file[:-8]}.txt"
 
-        for sent in sentences:
-            context = sent['text']
+            f = open(file_path,"w",encoding="utf-8")
 
-            #skip short contexts
-            if len(context)< config.short_context_length:
-                continue
+            for sent in sentences:
+                context = sent['text']
 
-            #enable impossbile answers if the number of candidate sentences is less than a specific threshold
-            strict_extractor = False if len(sentences) < config.strict_threshold else True
-            prediction = unlp.get_model_preds_on_one_sentence(sent['text'],strict_extraction=strict_extractor)
-            if prediction['start'] != prediction['end']:
-                utils.text_highligher(sent['text'],prediction['start'],prediction['end'],"RED")
-                f.write("\n{},{},{},{}\n".format(sent["idx"],sent["text"],prediction["start"],prediction["end"]))
-                log_printer("\n{},{},{},{},{}".format(tei_file,sent["idx"],sent["text"],prediction["start"],prediction["end"]))
-        log_printer("\n********************************************\n")
-        #print("\n****************************************************\n")
+                #skip short contexts
+                if len(context)< config.short_context_length:
+                    continue
+
+                #enable impossbile answers if the number of candidate sentences is less than a specific threshold
+                strict_extractor = False if len(sentences) < config.strict_threshold else True
+                prediction = unlp.get_model_preds_on_one_sentence(sent['text'],strict_extraction=strict_extractor)
+                if prediction['start'] != prediction['end']:
+                    utils.text_highligher(sent['text'],prediction['start'],prediction['end'],"RED")
+                    f.write("\n{},{},{},{}\n".format(sent["idx"],sent["text"],prediction["start"],prediction["end"]))
+                    log_printer("\n{},{},{},{},{}".format(tei_file,sent["idx"],sent["text"],prediction["start"],prediction["end"]))
+            log_printer("\n********************************************\n")
+            #print("\n****************************************************\n")
+        except Exception as e:
+            log_printer(e)
 
     #remove pdfs after handling them
     utils.delete_pdf_files(pdf_batch,destination_dir)

@@ -20,4 +20,7 @@ COPY src/grobid_client_python/ ./grobid_client_python
 # Copies everything in the local folder `./mentions/` into the container folder `/app`
 COPY . .
 
+#RUN mkdir /data/mentions/in_pdfs  /data/mentions/out_tei /data/mentions/results
+#RUN cp src/resources/data/  /data/mentions/
+
 CMD ["python3", "./src/main.py"]
