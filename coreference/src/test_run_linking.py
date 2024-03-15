@@ -12,8 +12,8 @@ def read_dataset_extraction_results(filepath):
 
 
 def run_test_entity_linking():
-    extraction_res = read_dataset_extraction_results('./src/data/sample3_dataset_mention_metadata.json')
-    metadata_db = read_dataset_metadata_from_file('./src/data/datasets.json.gz')
+    extraction_res = read_dataset_extraction_results('/data/coreference/sample3_dataset_mention_metadata.json')
+    metadata_db = read_dataset_metadata_from_file('/data/coreference/datasets.json.gz')
     # print(metadata_db[metadata_db['name'].str.contains('validation|Validation')].name)
     # print(metadata_db[metadata_db.name.str.contains('ShanghaiTech')][['name', 'description']].to_string())
     # print('External metadata entry count: ', len(metadata_db), '\nExtraction input count is', len(extraction_res))
