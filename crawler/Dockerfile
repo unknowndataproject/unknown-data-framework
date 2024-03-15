@@ -14,6 +14,6 @@ RUN wget https://repo1.maven.org/maven2/org/archive/heritrix/heritrix/3.4.0-2022
 RUN tar xzvf src/heritrix-3.4.0-20220727-dist.tar.gz
 RUN ln -s heritrix-3.4.0-20220727 heritrix
 RUN echo "admin:p4ssw0rd" > auth.conf
-RUN cp src/warcfilter-1.0-SNAPSHOT.jar heritrix/lib
+RUN cp src/warcfilter-1.1-SNAPSHOT.jar heritrix/lib
 
 CMD ["bash", "./src/start_crawl_job.sh"]
