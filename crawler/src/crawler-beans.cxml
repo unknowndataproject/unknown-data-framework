@@ -37,12 +37,12 @@
 # This Properties map is specified in the Java 'property list' text format
 # http://java.sun.com/javase/6/docs/api/java/util/Properties.html#load%28java.io.Reader%29
 
-metadata.operatorContactUrl=https://amor.cms.hu-berlin.de/~jaeschkr/crawler/
+metadata.operatorContactUrl=https://unknowndataproject.github.io/
 metadata.jobName=basic
 metadata.description=Basic crawl starting with useful defaults
 
 # further changes from config.text
-crawlController.maxToeThreads = 10
+crawlController.maxToeThreads = 150
 fetchHttp.maxLengthBytes = 10485760
 warcWriter.poolMaxActive = 10
 frontier.maxRetries = 3
@@ -376,7 +376,9 @@ frontier.maxRetries = 3
                         <property name="regexList">
                             <list>
                                 <value><![CDATA[10[.][0-9]{4,}(?:[.][0-9]+)*/(?:(?!["&\'<>])\S)+]]></value>
-                                <value><![CDATA[(?i)(dataset)]]></value>
+                                <value><![CDATA[(?i)\b(row|data set|data)\b]]></value>
+                                <value><![CDATA[(?i)\b(enregistrement|jeu de donn(é|&eacute;|&#233;|&#xE9;|\u00E9)es|donn(é|&eacute;|&#233;|&#xE9;|\u00E9)es de la recherche)\b]]></value>
+                                <value><![CDATA[(?i)\b(Dataset|Datensatz|Datenbasis|Forschungsdaten)\b]]></value>
                             </list>
                         </property>
 		    </bean>
