@@ -1,3 +1,3 @@
-warc_dir: "/data/crawler/test_job/20240315094944/warcs/"
+warc_dir: "/data/crawler/test_job/latest/warcs/" #note that "latest" is symbolic link
 text_dir: "/data/mentions/web-mentions/"
 
