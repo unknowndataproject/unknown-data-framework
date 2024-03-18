@@ -8,6 +8,18 @@ services:
       - ./data/dblp-export:/data/dblp-export
       - ./data/gesis-export:/data/gesis-export
 
+  web-mentions:
+    build: ./web-mentions/
+    volumes:
+      - ./data/crawler:/data/crawler
+      - ./data/mentions:/data/mentions
+      - ./data/coreference:/data/coreference
+      - ./data/dblp-export:/data/dblp-export
+      - ./data/gesis-export:/data/gesis-export
+    depends_on:
+      crawler:
+        condition: service_completed_successfully
+
   grobid-service:
     image: grobid/grobid:0.8.0
     restart: "unless-stopped"
@@ -38,6 +50,8 @@ services:
       - ./data/dblp-export:/data/dblp-export
       - ./data/gesis-export:/data/gesis-export
     depends_on:
+      web-mentions:
+        condition: service_completed_successfully
       mentions:
         condition: service_completed_successfully
 

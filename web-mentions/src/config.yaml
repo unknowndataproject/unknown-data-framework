@@ -1,0 +1,3 @@
+warc_dir: "/data/crawler/test_job/20240315094944/warcs/"
+text_dir: "/data/mentions/web-mentions/"
+
