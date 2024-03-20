@@ -6,6 +6,7 @@ grobid_config: "./grobid_client_python/config.json" #
 known_dataset_file: "known_datasets.txt"
 log_file: "/data/mentions/logs.txt" #"./src/resources/data/logs.txt"
 extraction_dir: "/data/mentions/results" #./src/resources/data/results"
+results_in_json: "/data/mentions/pdfs_extraction.json"
 model_checkpoint: "./resources/models/best_model/fold{exp}"
 model_version:  4
 strict_threshold: 5

@@ -7,6 +7,7 @@ and if not found apply NLp model
 
 The model first copy a list of 10 pdfs to its local directory and work on them and when it is does it remove them and copy another until it hanldes all pdfs.
 '''
+import json
 import os
 import shutil
 from pathlib import Path
@@ -44,6 +45,7 @@ pdf_list = os.listdir(config.pdf_dir)
 destination_dir = config.grobid_pdf_dir
 
 processed_tei_files_list = []
+all_extration_results = []
 for i in range(0,len(pdf_list), batch_size): #math.ceil(len(pdf_list)/batch_size)+1):
 
     log_printer(f"****************************Handling Batch {i}*****************************")
@@ -126,12 +128,16 @@ for i in range(0,len(pdf_list), batch_size): #math.ceil(len(pdf_list)/batch_size
         #log_printer("Number of sentences per file for which a known dataset was matched: ")
         log_printer(f"Number of sentences selected by heuristics: {len(heu_selected_sents[tei_file])}\n")
 
+
         try:
             file_path = f"{config.extraction_dir}/{tei_file[:-8]}.txt"
 
             f = open(file_path,"w",encoding="utf-8")
 
             for sent in sentences:
+                # this dictionary will contain all
+                file_extraction_result = {}
+
                 context = sent['text']
 
                 #skip short contexts
@@ -143,6 +149,14 @@ for i in range(0,len(pdf_list), batch_size): #math.ceil(len(pdf_list)/batch_size
                 prediction = unlp.get_model_preds_on_one_sentence(sent['text'],strict_extraction=strict_extractor)
                 if prediction['start'] != prediction['end']:
                     utils.text_highligher(sent['text'],prediction['start'],prediction['end'],"RED")
+                    #add extaction output to a dictionary
+                    file_extraction_result["mentioned_in_paper"] = tei_file
+                    file_extraction_result["context_id"]= sent["idx"]
+                    file_extraction_result["dataset_context"]=sent["text"]
+                    file_extraction_result["mention_start"]=prediction["start"]
+                    file_extraction_result["mention_end"] = prediction["end"]
+                    #add the dictionary to the list of all results to be saved in json
+                    all_extration_results.append(file_extraction_result)
                     f.write("\n{},{},{},{}\n".format(sent["idx"],sent["text"],prediction["start"],prediction["end"]))
                     log_printer("\n{},{},{},{},{}".format(tei_file,sent["idx"],sent["text"],prediction["start"],prediction["end"]))
             log_printer("\n********************************************\n")
@@ -154,3 +168,8 @@ for i in range(0,len(pdf_list), batch_size): #math.ceil(len(pdf_list)/batch_size
     utils.delete_pdf_files(pdf_batch,destination_dir)
     #print("\nbatch files are deleted \n")
 
+
+
+# Write the list of objects to the JSON file
+with open(config.results_in_json, "w") as json_file:
+    json.dump(all_extration_results, json_file, indent=4)

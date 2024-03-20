@@ -56,6 +56,8 @@ def extract_webpages_from_warc(warc_file_path, output_directory):
                     #output_file.write(content)
                     output_file.write(text_content)
 
+
+
 #load cofig dictionary
 config = utils.read_config("config.yaml")
 
@@ -66,3 +68,7 @@ if __name__ == "__main__":
     directory_path.mkdir(exist_ok=True)
 
     handel_warc_files(config.warc_dir,config.text_dir)
+
+    #extract_mentions_from_webpages(config)
+
+
