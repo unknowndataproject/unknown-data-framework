@@ -28,4 +28,4 @@ RUN python3 -m spacy download en_core_web_md
 # Copies everything in the local folder `./coreference/` into the container folder `/app`
 COPY . . 
 
-CMD ["python3", "./src/test_run_linking.py"]
+CMD ["bash", "./src/run.sh"]
