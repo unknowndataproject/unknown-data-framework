@@ -1,7 +1,4 @@
 import yaml
-import torch
-from transformers import pipeline,AutoTokenizer,AutoModelForQuestionAnswering
-from tqdm import tqdm
 import re
 
 

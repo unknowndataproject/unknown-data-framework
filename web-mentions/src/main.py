@@ -69,6 +69,4 @@ if __name__ == "__main__":
 
     handel_warc_files(config.warc_dir,config.text_dir)
 
-    #extract_mentions_from_webpages(config)
-
 

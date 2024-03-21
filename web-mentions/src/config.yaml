@@ -1,5 +1,5 @@
-warc_dir: "../../data/crawler/test_job/20240319115508/warcs/" #note that "latest" is symbolic link
-text_dir: "../../data/mentions/web-mentions/"
+warc_dir: "/data/crawler/test_job/latest/warcs/" #note that "latest" is symbolic link
+text_dir: "/data/mentions/web-mentions/"
 model_checkpoint: "Yousef-Cot/dataset-mention-extractor"  # f"src/resources/models/fold{exp}"
 question: "On which data the study is based?"
 # 4 "Which data samples or images are used"
