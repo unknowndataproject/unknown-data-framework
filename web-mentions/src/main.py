@@ -4,6 +4,7 @@ import csv
 import re
 import json
 import gzip
+import time
 
 from warcio.archiveiterator import ArchiveIterator
 from bs4 import BeautifulSoup
@@ -127,6 +128,8 @@ if __name__ == "__main__":
     directory_path.mkdir(exist_ok=True)
 
     #handel_warc_files(config.warc_dir,config.text_dir)
+    start_time = time.time()
     fast_extract_webpages_from_warc(config.warc_dir, config.text_dir)
+    print(f"finished in {time.time() - start_time} seconds")
 
 
