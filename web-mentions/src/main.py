@@ -114,8 +114,8 @@ def fast_extract_webpages_from_warc(warc_file_path, output_directory):
                         of.write("\n".encode('utf-8'))
                         rec_match_count += 1
 
-        print(f"processed {rec_proc_count} records")
-        print(f"saved {match_counter} matches out of {rec_match_count} records")
+    print(f"processed {rec_proc_count} records")
+    print(f"saved {match_counter} matches out of {rec_match_count} records")
 
 
 #load cofig dictionary
