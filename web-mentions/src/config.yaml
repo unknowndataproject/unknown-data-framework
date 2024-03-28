@@ -1,5 +1,7 @@
-warc_dir: "../../data/crawler/test_job/20240319115508/warcs/" #note that "latest" is symbolic link
-text_dir: "../../data/mentions/web-mentions/"
+warc_dir: "../../data/crawler/test_job/20240325135505/warcs/" #note that "latest" is symbolic link
+web_mentions: "../../data/mentions/web-mentions/"
+extracted_text_dir: "../../data/mentions/web-mentions/"
+extracted_html_dir: "../../data/mentions/web-mentions/"
 model_checkpoint: "Yousef-Cot/dataset-mention-extractor"  # f"src/resources/models/fold{exp}"
 question: "On which data the study is based?"
 # 4 "Which data samples or images are used"
@@ -7,6 +9,8 @@ question: "On which data the study is based?"
 # 2 "Which dataset or database is used?"
 # 1 "Is there any use of data collected from a survey"
 # 0 "What data are used?" #
+short_context_length: 5
+
 
 
 
