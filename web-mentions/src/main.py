@@ -110,6 +110,7 @@ def fast_extract_webpages_from_warc(warc_file_path, output_directory):
                                     record_data['matches'].append(sentence)
                     if len(record_data['matches']) > 0:
                         of.write(json.dumps(record_data).encode('utf-8'))
+                        of.write("\n".encode('utf-8'))
                         rec_match_count += 1
 
         print(f"processed {rec_proc_count} records")
