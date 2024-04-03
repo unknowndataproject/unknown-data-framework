@@ -29,16 +29,16 @@ def read_tsv2dict(filepath):
 
 def run_test_entity_linking():
     dataset_mention_metadata_dir = '/data/mentions/results/' 
-    dataset_mention_metadata_file = '/data/coreference/sample3_dataset_mention_metadata.json'
-    paper_id_mapping_file = '/data/coreference/sample_3_paper_id_mapping.tsv'
-    extra_dataset_metadata_file = '/data/coreference/matched_dataset_paper_metadata.json'
+    dataset_mention_metadata_file = '/app/data/sample3_dataset_mention_metadata.json'
+    paper_id_mapping_file = '/app/data/sample_3_paper_id_mapping.tsv'
+    extra_dataset_metadata_file = '/app/data/matched_dataset_paper_metadata.json'
     # for f in os.listdir(dataset_mention_metadata_dir):
     #     if os.path.isfile(os.path.join(dataset_mention_metadata_dir, f)):
     #         extraction_res = read_extract_csv(os.path.join(dataset_mention_metadata_dir, f))
     all_mentions_metadata = read_json(dataset_mention_metadata_file)
     extraction_res = all_mentions_metadata[:200]
     # print(len(extraction_res))
-    metadata_db = read_dataset_metadata_from_file('/data/coreference/datasets.json.gz')
+    metadata_db = read_dataset_metadata_from_file('/app/data/datasets.json.gz')
     extra_metadata_db = read_json(extra_dataset_metadata_file)
     extra_metadata_dict = { e['dataset_name']: {k: v if not k =='paper_authors' else [{'author_name': author} for author in v] for k,v in e.items()} for e in extra_metadata_db}
 
