@@ -2,9 +2,6 @@ import json
 import sys
 
 import yaml
-import torch
-from transformers import pipeline,AutoTokenizer,AutoModelForQuestionAnswering
-from tqdm import tqdm
 import re
 from bs4 import BeautifulSoup
 
