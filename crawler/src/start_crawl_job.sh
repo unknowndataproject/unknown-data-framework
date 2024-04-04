@@ -5,7 +5,7 @@
 
 mkdir -p /data/crawler/test_job/
 ln -s /data/crawler/test_job /app/heritrix/jobs/test_job
-cp /app/src/crawler-beans.cxml /app/src/seeds.txt /app/heritrix/jobs/test_job/
+cp /app/src/crawler-beans.cxml /app/src/seeds.txt /app/heritrix/jobs/test_job
 
 # start heritrix crawler
 

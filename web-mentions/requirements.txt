@@ -1,3 +1,5 @@
 warcio==1.7.4
 beautifulsoup4==4.11.2
 PyYAML==6.0
+resiliparse
+fastwarc
