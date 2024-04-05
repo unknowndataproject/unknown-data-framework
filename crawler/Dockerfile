@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:22.04
 
 # Changes working directory to `/app` within docker image
 WORKDIR /app
