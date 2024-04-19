@@ -1,16 +1,1 @@
 https://amor.cms.hu-berlin.de/~tieslers/crawl
-https://www.kde.cs.uni-kassel.de/wp-content/uploads/bibsonomy/
-http://homepages.uni-paderborn.de/frahling/coremeans.html
-https://sites.google.com/site/ihaiphan/data-sets
-https://cseweb.ucsd.edu/~jmcauley/datasets.html
-https://nijianmo.github.io/amazon/index.html
-https://eigentaste.berkeley.edu/dataset/
-https://grouplens.org/datasets/movielens/
-http://www.cs.toronto.edu/~wenjie/cvpr16.html
-http://www.wanghao.in/CDL.htm
-https://wwwdb.inf.tu-dresden.de/research-projects/dresden-web-table-corpus/
-https://www.ismir.net/resources/datasets/
-https://lab.kb.nl/products/product_type/dataset
-https://faces.mpdl.mpg.de/
-https://ditto.ing.unimore.it/toothfairy/dataset/
-https://amor.cms.hu-berlin.de/~tieslers/crawl
