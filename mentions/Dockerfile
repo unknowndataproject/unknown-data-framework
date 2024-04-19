@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:22.04
 
 # Changes working directory to `/app` within docker image
 WORKDIR /app
@@ -7,7 +7,17 @@ WORKDIR /app
 RUN apt update && \
     apt install -y python3
 
-# Copies everything in the local folder `./mentions/` into the container folder `/app`
-COPY . . 
+#install get
+RUN apt-get update && apt-get install -y python3-pip
 
-CMD ["python3", "./src/hello.py"]
+COPY requirements.txt .
+
+RUN python3 -m pip install --no-cache-dir -r requirements.txt
+
+COPY src/config.yaml .
+COPY src/grobid_client_python/ ./grobid_client_python
+
+# Copies everything in the local folder `./mentions/` into the container folder `/app`
+COPY . .
+
+CMD ["python3", "./src/main.py"]
