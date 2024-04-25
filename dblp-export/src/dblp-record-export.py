@@ -1,5 +1,5 @@
 '''
-This module loads a given output from the previous coreference module
+This module loads a given output from the coreference module
 and creates an output file that can be used to integrate the data 
 into the dblp services.
 '''
@@ -10,7 +10,7 @@ from datetime import datetime
 from lxml import etree
 
 
-INPUT_FILE = './files/matched_dataset_paper_metadata.json'
+INPUT_FILE = '/data/coreference/pdf_output.json'
 OUTPUT_FILE = f'/data/dblp-export/unknown-data-framework_dblp-export_{datetime.now().isoformat()}.tp'
 
 DOCTYPE = '<!DOCTYPE tp SYSTEM "tp.dtd">'

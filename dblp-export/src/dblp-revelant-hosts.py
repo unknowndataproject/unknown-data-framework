@@ -1,10 +1,18 @@
+'''
+This modul uses the output of the coreference model to
+identify the most used hosts. 
+It returns an ordered list of the most used host together with
+their number of occurences and some example links. 
+The list is provided as CSV file.
+'''
+
 import json 
 import csv
 from urllib.parse import urlparse
 
 
-INPUT_FILE = "dblp-export/files/example_input.json"
-OUTPUT_FILE = "most-relevant-hosts.csv"
+INPUT_FILE = '/data/coreference/pdf_output.json'
+OUTPUT_FILE = '/data/dblp-export/most-relevant-hosts.csv'
 
 
 def main():
@@ -20,7 +28,7 @@ def load_coreference_output():
 
 
 def extract_host_information(data):
-    "Returns list of used hosts, sorted descending by frequency, together with up to 5 examle urls."
+    'Returns list of used hosts, sorted descending by frequency, together with up to 5 example urls.'
     hosts = dict()
     for key, value in data.items():
         homepage = value['dataset_homepage']
@@ -53,6 +61,3 @@ def export_to_csv(hosts):
 
 if __name__ == "__main__":
     main()
-
-
-
