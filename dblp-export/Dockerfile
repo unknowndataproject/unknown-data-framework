@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copies everything in the local folder `./dblp-export/` into the container folder `/app`
 COPY . . 
 
-CMD ["python3", "./src/dblp-export.py"]
+CMD ["python3", "./src/dblp-revelant-hosts.py"]

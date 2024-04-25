@@ -1,0 +1,1174 @@
+{
+    "1": {
+        "dataset_entity": "PASCAL VOC",
+        "dataset_homepage": "http://host.robots.ox.ac.uk/pascal/VOC/",
+        "dataset_author": [
+            {
+                "author_name": "Zheng Dong"
+            },
+            {
+                "author_name": "Ke Xu"
+            },
+            {
+                "author_name": "Yin Yang"
+            },
+            {
+                "author_name": "Hujun Bao"
+            },
+            {
+                "author_name": "Weiwei Xu"
+            },
+            {
+                "author_name": "Rynson W. H. Lau"
+            }
+        ],
+        "dataset_introduced_date": "2020-12-13",
+        "matched_mention": "PASCAL VOC and MS COCO datasets",
+        "matched_context": "Despite the simplicity of the proposed method, our experiments with different state-of-the-art deep learning architectures on PASCAL VOC and MS COCO datasets demonstrate the effectiveness and generality of our Mutual Guidance strategy.",
+        "mentioned_in_paper": "2009.14085",
+        "source_paper": {
+            "paper_title": "Location-aware Single Image Reflection Removal",
+            "paper_authors": [
+                {
+                    "author_name": "Zheng Dong"
+                },
+                {
+                    "author_name": "Ke Xu"
+                },
+                {
+                    "author_name": "Yin Yang"
+                },
+                {
+                    "author_name": "Hujun Bao"
+                },
+                {
+                    "author_name": "Weiwei Xu"
+                },
+                {
+                    "author_name": "Rynson W. H. Lau"
+                }
+            ],
+            "paper_url": "https://paperswithcode.com/paper/location-aware-single-image-reflection",
+            "paper_arxiv_id": "2012.07131",
+            "paper_date": "2020-12-13",
+            "paper_url_pdf": "https://arxiv.org/pdf/2012.07131v2.pdf",
+            "paper_tasks": [
+                "Reflection Removal"
+            ],
+            "paper_proceeding": "ICCV 2021 10",
+            "paper_abstract": "This paper proposes a novel location-aware deep-learning-based single image reflection removal method. Our network has a reflection detection module to regress a probabilistic reflection confidence map, taking multi-scale Laplacian features as inputs. This probabilistic map tells if a region is reflection-dominated or transmission-dominated, and it is used as a cue for the network to control the feature flow when predicting the reflection and transmission layers. We design our network as a recurrent network to progressively refine reflection removal results at each iteration. The novelty is that we leverage Laplacian kernel parameters to emphasize the boundaries of strong reflections. It is beneficial to strong reflection detection and substantially improves the quality of reflection removal results. Extensive experiments verify the superior performance of the proposed method over state-of-the-art approaches. Our code and the pre-trained model can be found at https://github.com/zdlarr/Location-aware-SIRR."
+        },
+        "metadata_creator": "UnknownData",
+        "metadata_external_source": [
+            "PapersWithCode Data Dump"
+        ]
+    },
+    "2": {
+        "dataset_entity": "PASCAL VOC",
+        "dataset_homepage": "http://host.robots.ox.ac.uk/pascal/VOC/",
+        "dataset_author": [
+            {
+                "author_name": "Zheng Dong"
+            },
+            {
+                "author_name": "Ke Xu"
+            },
+            {
+                "author_name": "Yin Yang"
+            },
+            {
+                "author_name": "Hujun Bao"
+            },
+            {
+                "author_name": "Weiwei Xu"
+            },
+            {
+                "author_name": "Rynson W. H. Lau"
+            }
+        ],
+        "dataset_introduced_date": "2020-12-13",
+        "matched_mention": "PASCAL VOC [13] and MS COCO [14] datasets",
+        "matched_context": "Despite the simplicity of the proposed strategy, Mutual Guidance brings consistent Average Precision (AP) gains over the traditional static strategy with different deep learn-ing architectures on PASCAL VOC [13] and MS COCO [14] datasets, especially on strict metrics such as AP75.",
+        "mentioned_in_paper": "2009.14085",
+        "source_paper": {
+            "paper_title": "Location-aware Single Image Reflection Removal",
+            "paper_authors": [
+                {
+                    "author_name": "Zheng Dong"
+                },
+                {
+                    "author_name": "Ke Xu"
+                },
+                {
+                    "author_name": "Yin Yang"
+                },
+                {
+                    "author_name": "Hujun Bao"
+                },
+                {
+                    "author_name": "Weiwei Xu"
+                },
+                {
+                    "author_name": "Rynson W. H. Lau"
+                }
+            ],
+            "paper_url": "https://paperswithcode.com/paper/location-aware-single-image-reflection",
+            "paper_arxiv_id": "2012.07131",
+            "paper_date": "2020-12-13",
+            "paper_url_pdf": "https://arxiv.org/pdf/2012.07131v2.pdf",
+            "paper_tasks": [
+                "Reflection Removal"
+            ],
+            "paper_proceeding": "ICCV 2021 10",
+            "paper_abstract": "This paper proposes a novel location-aware deep-learning-based single image reflection removal method. Our network has a reflection detection module to regress a probabilistic reflection confidence map, taking multi-scale Laplacian features as inputs. This probabilistic map tells if a region is reflection-dominated or transmission-dominated, and it is used as a cue for the network to control the feature flow when predicting the reflection and transmission layers. We design our network as a recurrent network to progressively refine reflection removal results at each iteration. The novelty is that we leverage Laplacian kernel parameters to emphasize the boundaries of strong reflections. It is beneficial to strong reflection detection and substantially improves the quality of reflection removal results. Extensive experiments verify the superior performance of the proposed method over state-of-the-art approaches. Our code and the pre-trained model can be found at https://github.com/zdlarr/Location-aware-SIRR."
+        },
+        "metadata_creator": "UnknownData",
+        "metadata_external_source": [
+            "PapersWithCode Data Dump"
+        ]
+    },
+    "3": {
+        "dataset_entity": "PASCAL VOC",
+        "dataset_homepage": "http://host.robots.ox.ac.uk/pascal/VOC/",
+        "dataset_author": [
+            {
+                "author_name": "Zheng Dong"
+            },
+            {
+                "author_name": "Ke Xu"
+            },
+            {
+                "author_name": "Yin Yang"
+            },
+            {
+                "author_name": "Hujun Bao"
+            },
+            {
+                "author_name": "Weiwei Xu"
+            },
+            {
+                "author_name": "Rynson W. H. Lau"
+            }
+        ],
+        "dataset_introduced_date": "2020-12-13",
+        "matched_mention": "PASCAL VOC dataset",
+        "matched_context": "PASCAL VOC dataset has 20 object categories.",
+        "mentioned_in_paper": "2009.14085",
+        "source_paper": {
+            "paper_title": "Location-aware Single Image Reflection Removal",
+            "paper_authors": [
+                {
+                    "author_name": "Zheng Dong"
+                },
+                {
+                    "author_name": "Ke Xu"
+                },
+                {
+                    "author_name": "Yin Yang"
+                },
+                {
+                    "author_name": "Hujun Bao"
+                },
+                {
+                    "author_name": "Weiwei Xu"
+                },
+                {
+                    "author_name": "Rynson W. H. Lau"
+                }
+            ],
+            "paper_url": "https://paperswithcode.com/paper/location-aware-single-image-reflection",
+            "paper_arxiv_id": "2012.07131",
+            "paper_date": "2020-12-13",
+            "paper_url_pdf": "https://arxiv.org/pdf/2012.07131v2.pdf",
+            "paper_tasks": [
+                "Reflection Removal"
+            ],
+            "paper_proceeding": "ICCV 2021 10",
+            "paper_abstract": "This paper proposes a novel location-aware deep-learning-based single image reflection removal method. Our network has a reflection detection module to regress a probabilistic reflection confidence map, taking multi-scale Laplacian features as inputs. This probabilistic map tells if a region is reflection-dominated or transmission-dominated, and it is used as a cue for the network to control the feature flow when predicting the reflection and transmission layers. We design our network as a recurrent network to progressively refine reflection removal results at each iteration. The novelty is that we leverage Laplacian kernel parameters to emphasize the boundaries of strong reflections. It is beneficial to strong reflection detection and substantially improves the quality of reflection removal results. Extensive experiments verify the superior performance of the proposed method over state-of-the-art approaches. Our code and the pre-trained model can be found at https://github.com/zdlarr/Location-aware-SIRR."
+        },
+        "metadata_creator": "UnknownData",
+        "metadata_external_source": [
+            "PapersWithCode Data Dump"
+        ]
+    },
+    "4": {
+        "dataset_entity": "COCO",
+        "dataset_homepage": "https://cocodataset.org/",
+        "dataset_author": "",
+        "dataset_introduced_date": null,
+        "matched_mention": "MS COCO dataset",
+        "matched_context": "MS COCO dataset contains 80 classes.",
+        "mentioned_in_paper": "2009.14085"
+    },
+    "5": {
+        "dataset_entity": "PASCAL VOC",
+        "dataset_homepage": "http://host.robots.ox.ac.uk/pascal/VOC/",
+        "dataset_author": [
+            {
+                "author_name": "Zheng Dong"
+            },
+            {
+                "author_name": "Ke Xu"
+            },
+            {
+                "author_name": "Yin Yang"
+            },
+            {
+                "author_name": "Hujun Bao"
+            },
+            {
+                "author_name": "Weiwei Xu"
+            },
+            {
+                "author_name": "Rynson W. H. Lau"
+            }
+        ],
+        "dataset_introduced_date": "2020-12-13",
+        "matched_mention": "PASCAL VOC dataset",
+        "matched_context": "Since the size of the objects greatly varies between MS COCO and PASCAL VOC, these size-dependent measures are ignored when experimenting with PASCAL VOC dataset.",
+        "mentioned_in_paper": "2009.14085",
+        "source_paper": {
+            "paper_title": "Location-aware Single Image Reflection Removal",
+            "paper_authors": [
+                {
+                    "author_name": "Zheng Dong"
+                },
+                {
+                    "author_name": "Ke Xu"
+                },
+                {
+                    "author_name": "Yin Yang"
+                },
+                {
+                    "author_name": "Hujun Bao"
+                },
+                {
+                    "author_name": "Weiwei Xu"
+                },
+                {
+                    "author_name": "Rynson W. H. Lau"
+                }
+            ],
+            "paper_url": "https://paperswithcode.com/paper/location-aware-single-image-reflection",
+            "paper_arxiv_id": "2012.07131",
+            "paper_date": "2020-12-13",
+            "paper_url_pdf": "https://arxiv.org/pdf/2012.07131v2.pdf",
+            "paper_tasks": [
+                "Reflection Removal"
+            ],
+            "paper_proceeding": "ICCV 2021 10",
+            "paper_abstract": "This paper proposes a novel location-aware deep-learning-based single image reflection removal method. Our network has a reflection detection module to regress a probabilistic reflection confidence map, taking multi-scale Laplacian features as inputs. This probabilistic map tells if a region is reflection-dominated or transmission-dominated, and it is used as a cue for the network to control the feature flow when predicting the reflection and transmission layers. We design our network as a recurrent network to progressively refine reflection removal results at each iteration. The novelty is that we leverage Laplacian kernel parameters to emphasize the boundaries of strong reflections. It is beneficial to strong reflection detection and substantially improves the quality of reflection removal results. Extensive experiments verify the superior performance of the proposed method over state-of-the-art approaches. Our code and the pre-trained model can be found at https://github.com/zdlarr/Location-aware-SIRR."
+        },
+        "metadata_creator": "UnknownData",
+        "metadata_external_source": [
+            "PapersWithCode Data Dump"
+        ]
+    },
+    "6": {
+        "dataset_entity": "PASCAL VOC",
+        "dataset_homepage": "http://host.robots.ox.ac.uk/pascal/VOC/",
+        "dataset_author": [
+            {
+                "author_name": "Zheng Dong"
+            },
+            {
+                "author_name": "Ke Xu"
+            },
+            {
+                "author_name": "Yin Yang"
+            },
+            {
+                "author_name": "Hujun Bao"
+            },
+            {
+                "author_name": "Weiwei Xu"
+            },
+            {
+                "author_name": "Rynson W. H. Lau"
+            }
+        ],
+        "dataset_introduced_date": "2020-12-13",
+        "matched_mention": "the PASCAL VOC dataset",
+        "matched_context": "The results obtained on the PASCAL VOC dataset are given in Table 1.",
+        "mentioned_in_paper": "2009.14085",
+        "source_paper": {
+            "paper_title": "Location-aware Single Image Reflection Removal",
+            "paper_authors": [
+                {
+                    "author_name": "Zheng Dong"
+                },
+                {
+                    "author_name": "Ke Xu"
+                },
+                {
+                    "author_name": "Yin Yang"
+                },
+                {
+                    "author_name": "Hujun Bao"
+                },
+                {
+                    "author_name": "Weiwei Xu"
+                },
+                {
+                    "author_name": "Rynson W. H. Lau"
+                }
+            ],
+            "paper_url": "https://paperswithcode.com/paper/location-aware-single-image-reflection",
+            "paper_arxiv_id": "2012.07131",
+            "paper_date": "2020-12-13",
+            "paper_url_pdf": "https://arxiv.org/pdf/2012.07131v2.pdf",
+            "paper_tasks": [
+                "Reflection Removal"
+            ],
+            "paper_proceeding": "ICCV 2021 10",
+            "paper_abstract": "This paper proposes a novel location-aware deep-learning-based single image reflection removal method. Our network has a reflection detection module to regress a probabilistic reflection confidence map, taking multi-scale Laplacian features as inputs. This probabilistic map tells if a region is reflection-dominated or transmission-dominated, and it is used as a cue for the network to control the feature flow when predicting the reflection and transmission layers. We design our network as a recurrent network to progressively refine reflection removal results at each iteration. The novelty is that we leverage Laplacian kernel parameters to emphasize the boundaries of strong reflections. It is beneficial to strong reflection detection and substantially improves the quality of reflection removal results. Extensive experiments verify the superior performance of the proposed method over state-of-the-art approaches. Our code and the pre-trained model can be found at https://github.com/zdlarr/Location-aware-SIRR."
+        },
+        "metadata_creator": "UnknownData",
+        "metadata_external_source": [
+            "PapersWithCode Data Dump"
+        ]
+    },
+    "7": {
+        "dataset_entity": "iFF",
+        "dataset_homepage": "https://hannahhaensen.github.io/nerftrinsic_four/",
+        "dataset_author": [
+            {
+                "author_name": "Hannah Schieber"
+            },
+            {
+                "author_name": "Fabian Deuser"
+            },
+            {
+                "author_name": "Bernhard Egger"
+            },
+            {
+                "author_name": "Norbert Oswald"
+            },
+            {
+                "author_name": "Daniel Roth"
+            }
+        ],
+        "dataset_introduced_date": "2023-03-16",
+        "matched_mention": "the more difficult MS COCO [14] dataset",
+        "matched_context": "We then conduct experiments on the more difficult MS COCO [14] dataset and report our results in Table 2.",
+        "mentioned_in_paper": "2009.14085",
+        "source_paper": {
+            "paper_title": "NeRFtrinsic Four: An End-To-End Trainable NeRF Jointly Optimizing Diverse Intrinsic and Extrinsic Camera Parameters",
+            "paper_authors": [
+                {
+                    "author_name": "Hannah Schieber"
+                },
+                {
+                    "author_name": "Fabian Deuser"
+                },
+                {
+                    "author_name": "Bernhard Egger"
+                },
+                {
+                    "author_name": "Norbert Oswald"
+                },
+                {
+                    "author_name": "Daniel Roth"
+                }
+            ],
+            "paper_url": "https://paperswithcode.com/paper/nerftrinsic-four-an-end-to-end-trainable-nerf",
+            "paper_arxiv_id": "2303.09412",
+            "paper_date": "2023-03-16",
+            "paper_url_pdf": "https://arxiv.org/pdf/2303.09412v4.pdf",
+            "paper_tasks": [
+                "Novel View Synthesis"
+            ],
+            "paper_proceeding": null,
+            "paper_abstract": "Novel view synthesis using neural radiance fields (NeRF) is the state-of-the-art technique for generating high-quality images from novel viewpoints. Existing methods require a priori knowledge about extrinsic and intrinsic camera parameters. This limits their applicability to synthetic scenes, or real-world scenarios with the necessity of a preprocessing step. Current research on the joint optimization of camera parameters and NeRF focuses on refining noisy extrinsic camera parameters and often relies on the preprocessing of intrinsic camera parameters. Further approaches are limited to cover only one single camera intrinsic. To address these limitations, we propose a novel end-to-end trainable approach called NeRFtrinsic Four. We utilize Gaussian Fourier features to estimate extrinsic camera parameters and dynamically predict varying intrinsic camera parameters through the supervision of the projection error. Our approach outperforms existing joint optimization methods on LLFF and BLEFF. In addition to these existing datasets, we introduce a new dataset called iFF with varying intrinsic camera parameters. NeRFtrinsic Four is a step forward in joint optimization NeRF-based view synthesis and enables more realistic and flexible rendering in real-world scenarios with varying camera parameters."
+        },
+        "metadata_creator": "UnknownData",
+        "metadata_external_source": [
+            "PapersWithCode Data Dump"
+        ]
+    },
+    "8": {
+        "dataset_entity": "ARCH",
+        "dataset_homepage": "https://arxiv.org/pdf/2103.05121v1.pdf",
+        "dataset_author": [
+            {
+                "author_name": "Jevgenij Gamper"
+            },
+            {
+                "author_name": "Nasir Rajpoot"
+            }
+        ],
+        "dataset_introduced_date": "2021-03-08",
+        "matched_mention": "different architectures and different public datasets",
+        "matched_context": "We assess our method on different architectures and different public datasets and compare it with the traditional static anchor matching strategy.",
+        "mentioned_in_paper": "2009.14085",
+        "source_paper": {
+            "paper_title": "Multiple Instance Captioning: Learning Representations from Histopathology Textbooks and Articles",
+            "paper_authors": [
+                {
+                    "author_name": "Jevgenij Gamper"
+                },
+                {
+                    "author_name": "Nasir Rajpoot"
+                }
+            ],
+            "paper_url": "https://paperswithcode.com/paper/multiple-instance-captioning-learning",
+            "paper_arxiv_id": "2103.05121",
+            "paper_date": "2021-03-08",
+            "paper_url_pdf": "https://arxiv.org/pdf/2103.05121v1.pdf",
+            "paper_tasks": [
+                "Image Captioning",
+                "Multi-Task Learning"
+            ],
+            "paper_proceeding": "CVPR 2021 1",
+            "paper_abstract": "We present ARCH, a computational pathology (CP) multiple instance captioning dataset to facilitate dense supervision of CP tasks. Existing CP datasets focus on narrow tasks; ARCH on the other hand contains dense diagnostic and morphological descriptions for a range of stains, tissue types and pathologies. Using intrinsic dimensionality estimation, we show that ARCH is the only CP dataset to (ARCH-)rival its computer vision analog MS-COCO Captions. We conjecture that an encoder pre-trained on dense image captions learns transferable representations for most CP tasks. We support the conjecture with evidence that ARCH representation transfers to a variety of pathology sub-tasks better than ImageNet features or representations obtained via self-supervised or multi-task learning on pathology images alone. We release our best model and invite other researchers to test it on their CP tasks."
+        },
+        "metadata_creator": "UnknownData",
+        "metadata_external_source": [
+            "PapersWithCode Data Dump"
+        ]
+    },
+    "9": {
+        "dataset_entity": "PASCAL VOC",
+        "dataset_homepage": "http://host.robots.ox.ac.uk/pascal/VOC/",
+        "dataset_author": [
+            {
+                "author_name": "Zheng Dong"
+            },
+            {
+                "author_name": "Ke Xu"
+            },
+            {
+                "author_name": "Yin Yang"
+            },
+            {
+                "author_name": "Hujun Bao"
+            },
+            {
+                "author_name": "Weiwei Xu"
+            },
+            {
+                "author_name": "Rynson W. H. Lau"
+            }
+        ],
+        "dataset_introduced_date": "2020-12-13",
+        "matched_mention": "the PASCAL VOC dataset",
+        "matched_context": "Experiments are performed on the PASCAL VOC dataset.",
+        "mentioned_in_paper": "2009.14085",
+        "source_paper": {
+            "paper_title": "Location-aware Single Image Reflection Removal",
+            "paper_authors": [
+                {
+                    "author_name": "Zheng Dong"
+                },
+                {
+                    "author_name": "Ke Xu"
+                },
+                {
+                    "author_name": "Yin Yang"
+                },
+                {
+                    "author_name": "Hujun Bao"
+                },
+                {
+                    "author_name": "Weiwei Xu"
+                },
+                {
+                    "author_name": "Rynson W. H. Lau"
+                }
+            ],
+            "paper_url": "https://paperswithcode.com/paper/location-aware-single-image-reflection",
+            "paper_arxiv_id": "2012.07131",
+            "paper_date": "2020-12-13",
+            "paper_url_pdf": "https://arxiv.org/pdf/2012.07131v2.pdf",
+            "paper_tasks": [
+                "Reflection Removal"
+            ],
+            "paper_proceeding": "ICCV 2021 10",
+            "paper_abstract": "This paper proposes a novel location-aware deep-learning-based single image reflection removal method. Our network has a reflection detection module to regress a probabilistic reflection confidence map, taking multi-scale Laplacian features as inputs. This probabilistic map tells if a region is reflection-dominated or transmission-dominated, and it is used as a cue for the network to control the feature flow when predicting the reflection and transmission layers. We design our network as a recurrent network to progressively refine reflection removal results at each iteration. The novelty is that we leverage Laplacian kernel parameters to emphasize the boundaries of strong reflections. It is beneficial to strong reflection detection and substantially improves the quality of reflection removal results. Extensive experiments verify the superior performance of the proposed method over state-of-the-art approaches. Our code and the pre-trained model can be found at https://github.com/zdlarr/Location-aware-SIRR."
+        },
+        "metadata_creator": "UnknownData",
+        "metadata_external_source": [
+            "PapersWithCode Data Dump"
+        ]
+    },
+    "10": {
+        "dataset_entity": "ReCO",
+        "dataset_homepage": "https://github.com/benywon/ReCO",
+        "dataset_author": [
+            {
+                "author_name": "BingningWang"
+            },
+            {
+                "author_name": "Ting Yao"
+            },
+            {
+                "author_name": "Qi Zhang"
+            },
+            {
+                "author_name": "Jingfang Xu"
+            },
+            {
+                "author_name": "Xiaochuan Wang"
+            }
+        ],
+        "dataset_introduced_date": "2020-06-22",
+        "matched_mention": "a scene recognition dataset",
+        "matched_context": "\u2022 MSRC-v1 [29] : This is a scene recognition dataset containing 240 images in 8 categories.",
+        "mentioned_in_paper": "2201.00714",
+        "source_paper": {
+            "paper_title": "ReCO: A Large Scale Chinese Reading Comprehension Dataset on Opinion",
+            "paper_authors": [
+                {
+                    "author_name": "BingningWang"
+                },
+                {
+                    "author_name": "Ting Yao"
+                },
+                {
+                    "author_name": "Qi Zhang"
+                },
+                {
+                    "author_name": "Jingfang Xu"
+                },
+                {
+                    "author_name": "Xiaochuan Wang"
+                }
+            ],
+            "paper_url": "https://paperswithcode.com/paper/reco-a-large-scale-chinese-reading",
+            "paper_arxiv_id": "2006.12146",
+            "paper_date": "2020-06-22",
+            "paper_url_pdf": "https://arxiv.org/pdf/2006.12146v1.pdf",
+            "paper_tasks": [
+                "Causal Inference",
+                "Chinese Reading Comprehension",
+                "Logical Reasoning",
+                "Machine Reading Comprehension",
+                "Question Answering",
+                "Reading Comprehension"
+            ],
+            "paper_proceeding": null,
+            "paper_abstract": "This paper presents the ReCO, a human-curated ChineseReading Comprehension dataset on Opinion. The questions in ReCO are opinion based queries issued to the commercial search engine. The passages are provided by the crowdworkers who extract the support snippet from the retrieved documents. Finally, an abstractive yes/no/uncertain answer was given by the crowdworkers. The release of ReCO consists of 300k questions that to our knowledge is the largest in Chinese reading comprehension. A prominent characteristic of ReCO is that in addition to the original context paragraph, we also provided the support evidence that could be directly used to answer the question. Quality analysis demonstrates the challenge of ReCO that requires various types of reasoning skills, such as causal inference, logical reasoning, etc. Current QA models that perform very well on many question answering problems, such as BERT, only achieve 77% accuracy on this dataset, a large margin behind humans nearly 92% performance, indicating ReCO presents a good challenge for machine reading comprehension. The codes, datasets are freely available at https://github.com/benywon/ReCO."
+        },
+        "metadata_creator": "UnknownData",
+        "metadata_external_source": [
+            "PapersWithCode Data Dump"
+        ]
+    },
+    "11": {
+        "dataset_entity": "QuALITY",
+        "dataset_homepage": "https://github.com/nyu-mll/quality",
+        "dataset_author": [
+            {
+                "author_name": "Richard Yuanzhe Pang"
+            },
+            {
+                "author_name": "Alicia Parrish"
+            },
+            {
+                "author_name": "Nitish Joshi"
+            },
+            {
+                "author_name": "Nikita Nangia"
+            },
+            {
+                "author_name": "Jason Phang"
+            },
+            {
+                "author_name": "Angelica Chen"
+            },
+            {
+                "author_name": "Vishakh Padmakumar"
+            },
+            {
+                "author_name": "Johnny Ma"
+            },
+            {
+                "author_name": "Jana Thompson"
+            },
+            {
+                "author_name": "He He"
+            },
+            {
+                "author_name": "Samuel R. Bowman"
+            }
+        ],
+        "dataset_introduced_date": "2021-12-16",
+        "matched_mention": "the lowquality dataset",
+        "matched_context": "The matrix X 7 is called the fake view and is incorporated into the Caltech-101-7 dataset as 7th view to simulate the lowquality dataset with the fake view.",
+        "mentioned_in_paper": "2201.00714",
+        "source_paper": {
+            "paper_title": "QuALITY: Question Answering with Long Input Texts, Yes!",
+            "paper_authors": [
+                {
+                    "author_name": "Richard Yuanzhe Pang"
+                },
+                {
+                    "author_name": "Alicia Parrish"
+                },
+                {
+                    "author_name": "Nitish Joshi"
+                },
+                {
+                    "author_name": "Nikita Nangia"
+                },
+                {
+                    "author_name": "Jason Phang"
+                },
+                {
+                    "author_name": "Angelica Chen"
+                },
+                {
+                    "author_name": "Vishakh Padmakumar"
+                },
+                {
+                    "author_name": "Johnny Ma"
+                },
+                {
+                    "author_name": "Jana Thompson"
+                },
+                {
+                    "author_name": "He He"
+                },
+                {
+                    "author_name": "Samuel R. Bowman"
+                }
+            ],
+            "paper_url": "https://paperswithcode.com/paper/quality-question-answering-with-long-input",
+            "paper_arxiv_id": "2112.08608",
+            "paper_date": "2021-12-16",
+            "paper_url_pdf": "https://arxiv.org/pdf/2112.08608v2.pdf",
+            "paper_tasks": [
+                "Multiple-choice",
+                "Multiple Choice Question Answering (MCQA)",
+                "Question Answering"
+            ],
+            "paper_proceeding": "NAACL 2022 7",
+            "paper_abstract": "To enable building and testing models on long-document comprehension, we introduce QuALITY, a multiple-choice QA dataset with context passages in English that have an average length of about 5,000 tokens, much longer than typical current models can process. Unlike in prior work with passages, our questions are written and validated by contributors who have read the entire passage, rather than relying on summaries or excerpts. In addition, only half of the questions are answerable by annotators working under tight time constraints, indicating that skimming and simple search are not enough to consistently perform well. Our baseline models perform poorly on this task (55.4%) and significantly lag behind human performance (93.5%)."
+        },
+        "metadata_creator": "UnknownData",
+        "metadata_external_source": [
+            "PapersWithCode Data Dump"
+        ]
+    },
+    "12": {
+        "dataset_entity": "RICH",
+        "dataset_homepage": "https://rich.is.tue.mpg.de/",
+        "dataset_author": [
+            {
+                "author_name": "Chun-Hao P. Huang"
+            },
+            {
+                "author_name": "Hongwei Yi"
+            },
+            {
+                "author_name": "Markus H\u00f6schle"
+            },
+            {
+                "author_name": "Matvey Safroshkin"
+            },
+            {
+                "author_name": "Tsvetelina Alexiadis"
+            },
+            {
+                "author_name": "Senya Polikovsky"
+            },
+            {
+                "author_name": "Daniel Scharstein"
+            },
+            {
+                "author_name": "Michael J. Black"
+            }
+        ],
+        "dataset_introduced_date": "2022-06-20",
+        "matched_mention": "a semantically-rich hypothetical dataset",
+        "matched_context": "Initially we consider a semantically-rich hypothetical dataset with four-attribute records (gross domestic product, population, per capita income and country name).",
+        "mentioned_in_paper": "1505.07804",
+        "source_paper": {
+            "paper_title": "Capturing and Inferring Dense Full-Body Human-Scene Contact",
+            "paper_authors": [
+                {
+                    "author_name": "Chun-Hao P. Huang"
+                },
+                {
+                    "author_name": "Hongwei Yi"
+                },
+                {
+                    "author_name": "Markus H\u00f6schle"
+                },
+                {
+                    "author_name": "Matvey Safroshkin"
+                },
+                {
+                    "author_name": "Tsvetelina Alexiadis"
+                },
+                {
+                    "author_name": "Senya Polikovsky"
+                },
+                {
+                    "author_name": "Daniel Scharstein"
+                },
+                {
+                    "author_name": "Michael J. Black"
+                }
+            ],
+            "paper_url": "https://paperswithcode.com/paper/capturing-and-inferring-dense-full-body-human-1",
+            "paper_arxiv_id": "2206.09553",
+            "paper_date": "2022-06-20",
+            "paper_url_pdf": "https://arxiv.org/pdf/2206.09553v1.pdf",
+            "paper_tasks": [
+                "human-scene contact detection",
+                "Markerless Motion Capture",
+                "Monocular 3D Human Pose Estimation"
+            ],
+            "paper_proceeding": "CVPR 2022 1",
+            "paper_abstract": "Inferring human-scene contact (HSC) is the first step toward understanding how humans interact with their surroundings. While detecting 2D human-object interaction (HOI) and reconstructing 3D human pose and shape (HPS) have enjoyed significant progress, reasoning about 3D human-scene contact from a single image is still challenging. Existing HSC detection methods consider only a few types of predefined contact, often reduce body and scene to a small number of primitives, and even overlook image evidence. To predict human-scene contact from a single image, we address the limitations above from both data and algorithmic perspectives. We capture a new dataset called RICH for \"Real scenes, Interaction, Contact and Humans.\" RICH contains multiview outdoor/indoor video sequences at 4K resolution, ground-truth 3D human bodies captured using markerless motion capture, 3D body scans, and high resolution 3D scene scans. A key feature of RICH is that it also contains accurate vertex-level contact labels on the body. Using RICH, we train a network that predicts dense body-scene contacts from a single RGB image. Our key insight is that regions in contact are always occluded so the network needs the ability to explore the whole image for evidence. We use a transformer to learn such non-local relationships and propose a new Body-Scene contact TRansfOrmer (BSTRO). Very few methods explore 3D contact; those that do focus on the feet only, detect foot contact as a post-processing step, or infer contact from body pose without looking at the scene. To our knowledge, BSTRO is the first method to directly estimate 3D body-scene contact from a single image. We demonstrate that BSTRO significantly outperforms the prior art. The code and dataset are available at https://rich.is.tue.mpg.de."
+        },
+        "metadata_creator": "UnknownData",
+        "metadata_external_source": [
+            "PapersWithCode Data Dump"
+        ]
+    },
+    "13": {
+        "dataset_entity": "Validation Dataset",
+        "dataset_homepage": "https://drive.google.com/file/d/1qWn7rAOWf-965r60MRBev9GH6rnjkjPS/view?usp=sharing",
+        "dataset_author": [
+            {
+                "author_name": "Haris Moazam Sheikh"
+            },
+            {
+                "author_name": "Philip S. Marcus"
+            }
+        ],
+        "dataset_introduced_date": "2022-01-30",
+        "matched_mention": "4.8 million images and validation dataset",
+        "matched_context": "We split it into training dataset of 4.8 million images and validation dataset of 0.5 million images for FedBoosting.",
+        "mentioned_in_paper": "2007.07296",
+        "source_paper": {
+            "paper_title": "Bayesian Optimization For Multi-Objective Mixed-Variable Problems",
+            "paper_authors": [
+                {
+                    "author_name": "Haris Moazam Sheikh"
+                },
+                {
+                    "author_name": "Philip S. Marcus"
+                }
+            ],
+            "paper_url": "https://paperswithcode.com/paper/bayesian-optimization-for-multi-objective-1",
+            "paper_arxiv_id": "2201.12767",
+            "paper_date": "2022-01-30",
+            "paper_url_pdf": "https://arxiv.org/pdf/2201.12767v2.pdf",
+            "paper_tasks": [
+                "Bayesian Optimization"
+            ],
+            "paper_proceeding": null,
+            "paper_abstract": "Optimizing multiple, non-preferential objectives for mixed-variable, expensive black-box problems is important in many areas of engineering and science. The expensive, noisy, black-box nature of these problems makes them ideal candidates for Bayesian optimization (BO). Mixed-variable and multi-objective problems, however, are a challenge due to BO's underlying smooth Gaussian process surrogate model. Current multi-objective BO algorithms cannot deal with mixed-variable problems. We present MixMOBO, the first mixed-variable, multi-objective Bayesian optimization framework for such problems. Using MixMOBO, optimal Pareto-fronts for multi-objective, mixed-variable design spaces can be found efficiently while ensuring diverse solutions. The method is sufficiently flexible to incorporate different kernels and acquisition functions, including those that were developed for mixed-variable or multi-objective problems by other authors. We also present HedgeMO, a modified Hedge strategy that uses a portfolio of acquisition functions for multi-objective problems. We present a new acquisition function, SMC. Our results show that MixMOBO performs well against other mixed-variable algorithms on synthetic problems. We apply MixMOBO to the real-world design of an architected material and show that our optimal design, which was experimentally fabricated and validated, has a normalized strain energy density $10^4$ times greater than existing structures."
+        },
+        "metadata_creator": "UnknownData",
+        "metadata_external_source": [
+            "PapersWithCode Data Dump"
+        ]
+    },
+    "14": {
+        "dataset_entity": "Validation Dataset",
+        "dataset_homepage": "https://drive.google.com/file/d/1qWn7rAOWf-965r60MRBev9GH6rnjkjPS/view?usp=sharing",
+        "dataset_author": [
+            {
+                "author_name": "Haris Moazam Sheikh"
+            },
+            {
+                "author_name": "Philip S. Marcus"
+            }
+        ],
+        "dataset_introduced_date": "2022-01-30",
+        "matched_mention": "all clients' validation datasets",
+        "matched_context": "As DP encryption is only used to encrypt local gradients between clients for evaluation and get the results on all clients' validation datasets, so DP has little impact on global gradients generating.",
+        "mentioned_in_paper": "2007.07296",
+        "source_paper": {
+            "paper_title": "Bayesian Optimization For Multi-Objective Mixed-Variable Problems",
+            "paper_authors": [
+                {
+                    "author_name": "Haris Moazam Sheikh"
+                },
+                {
+                    "author_name": "Philip S. Marcus"
+                }
+            ],
+            "paper_url": "https://paperswithcode.com/paper/bayesian-optimization-for-multi-objective-1",
+            "paper_arxiv_id": "2201.12767",
+            "paper_date": "2022-01-30",
+            "paper_url_pdf": "https://arxiv.org/pdf/2201.12767v2.pdf",
+            "paper_tasks": [
+                "Bayesian Optimization"
+            ],
+            "paper_proceeding": null,
+            "paper_abstract": "Optimizing multiple, non-preferential objectives for mixed-variable, expensive black-box problems is important in many areas of engineering and science. The expensive, noisy, black-box nature of these problems makes them ideal candidates for Bayesian optimization (BO). Mixed-variable and multi-objective problems, however, are a challenge due to BO's underlying smooth Gaussian process surrogate model. Current multi-objective BO algorithms cannot deal with mixed-variable problems. We present MixMOBO, the first mixed-variable, multi-objective Bayesian optimization framework for such problems. Using MixMOBO, optimal Pareto-fronts for multi-objective, mixed-variable design spaces can be found efficiently while ensuring diverse solutions. The method is sufficiently flexible to incorporate different kernels and acquisition functions, including those that were developed for mixed-variable or multi-objective problems by other authors. We also present HedgeMO, a modified Hedge strategy that uses a portfolio of acquisition functions for multi-objective problems. We present a new acquisition function, SMC. Our results show that MixMOBO performs well against other mixed-variable algorithms on synthetic problems. We apply MixMOBO to the real-world design of an architected material and show that our optimal design, which was experimentally fabricated and validated, has a normalized strain energy density $10^4$ times greater than existing structures."
+        },
+        "metadata_creator": "UnknownData",
+        "metadata_external_source": [
+            "PapersWithCode Data Dump"
+        ]
+    },
+    "15": {
+        "dataset_entity": "VIPeR",
+        "dataset_homepage": "https://github.com/KaiyangZhou/deep-person-reid/blob/master/torchreid/data/datasets/image/viper.py",
+        "dataset_author": "",
+        "dataset_introduced_date": null,
+        "matched_mention": "the VIPeR and PRID2011 datasets",
+        "matched_context": "For semi-supervised setting, we use the VIPeR and PRID2011 datasets.",
+        "mentioned_in_paper": "1603.02139"
+    },
+    "16": {
+        "dataset_entity": "S-COCO",
+        "dataset_homepage": "",
+        "dataset_author": [
+            {
+                "author_name": "Daniel DeTone"
+            },
+            {
+                "author_name": "Tomasz Malisiewicz"
+            },
+            {
+                "author_name": "Andrew Rabinovich"
+            }
+        ],
+        "dataset_introduced_date": "2016-06-13",
+        "matched_mention": "MS-COCO dataset",
+        "matched_context": "MS-COCO dataset [15]) is that our system relies on background information on art history and artistic styles.",
+        "mentioned_in_paper": "1810.09617",
+        "source_paper": {
+            "paper_title": "Deep Image Homography Estimation",
+            "paper_authors": [
+                {
+                    "author_name": "Daniel DeTone"
+                },
+                {
+                    "author_name": "Tomasz Malisiewicz"
+                },
+                {
+                    "author_name": "Andrew Rabinovich"
+                }
+            ],
+            "paper_url": "https://paperswithcode.com/paper/deep-image-homography-estimation",
+            "paper_arxiv_id": "1606.03798",
+            "paper_date": "2016-06-13",
+            "paper_url_pdf": "http://arxiv.org/pdf/1606.03798v1.pdf",
+            "paper_tasks": [
+                "Homography Estimation"
+            ],
+            "paper_proceeding": null,
+            "paper_abstract": "We present a deep convolutional neural network for estimating the relative\nhomography between a pair of images. Our feed-forward network has 10 layers,\ntakes two stacked grayscale images as input, and produces an 8 degree of\nfreedom homography which can be used to map the pixels from the first image to\nthe second. We present two convolutional neural network architectures for\nHomographyNet: a regression network which directly estimates the real-valued\nhomography parameters, and a classification network which produces a\ndistribution over quantized homographies. We use a 4-point homography\nparameterization which maps the four corners from one image into the second\nimage. Our networks are trained in an end-to-end fashion using warped MS-COCO\nimages. Our approach works without the need for separate local feature\ndetection and transformation estimation stages. Our deep models are compared to\na traditional homography estimator based on ORB features and we highlight the\nscenarios where HomographyNet outperforms the traditional technique. We also\ndescribe a variety of applications powered by deep homography estimation, thus\nshowcasing the flexibility of a deep learning approach."
+        },
+        "metadata_creator": "UnknownData",
+        "metadata_external_source": [
+            "PapersWithCode Data Dump"
+        ]
+    },
+    "17": {
+        "dataset_entity": "ART Dataset",
+        "dataset_homepage": "http://abductivecommonsense.xyz/",
+        "dataset_author": [
+            {
+                "author_name": "Chandra Bhagavatula"
+            },
+            {
+                "author_name": "Ronan Le Bras"
+            },
+            {
+                "author_name": "Chaitanya Malaviya"
+            },
+            {
+                "author_name": "Keisuke Sakaguchi"
+            },
+            {
+                "author_name": "Ari Holtzman"
+            },
+            {
+                "author_name": "Hannah Rashkin"
+            },
+            {
+                "author_name": "Doug Downey"
+            },
+            {
+                "author_name": "Scott Wen-tau Yih"
+            },
+            {
+                "author_name": "Yejin Choi"
+            }
+        ],
+        "dataset_introduced_date": "2019-08-15",
+        "matched_mention": "3 SemArt Dataset",
+        "matched_context": "3 SemArt Dataset",
+        "mentioned_in_paper": "1810.09617",
+        "source_paper": {
+            "paper_title": "Abductive Commonsense Reasoning",
+            "paper_authors": [
+                {
+                    "author_name": "Chandra Bhagavatula"
+                },
+                {
+                    "author_name": "Ronan Le Bras"
+                },
+                {
+                    "author_name": "Chaitanya Malaviya"
+                },
+                {
+                    "author_name": "Keisuke Sakaguchi"
+                },
+                {
+                    "author_name": "Ari Holtzman"
+                },
+                {
+                    "author_name": "Hannah Rashkin"
+                },
+                {
+                    "author_name": "Doug Downey"
+                },
+                {
+                    "author_name": "Scott Wen-tau Yih"
+                },
+                {
+                    "author_name": "Yejin Choi"
+                }
+            ],
+            "paper_url": "https://paperswithcode.com/paper/abductive-commonsense-reasoning",
+            "paper_arxiv_id": "1908.05739",
+            "paper_date": "2019-08-15",
+            "paper_url_pdf": "https://arxiv.org/pdf/1908.05739v2.pdf",
+            "paper_tasks": [
+                "Multiple-choice",
+                "Natural Language Inference",
+                "Question Answering"
+            ],
+            "paper_proceeding": "ICLR 2020 1",
+            "paper_abstract": "Abductive reasoning is inference to the most plausible explanation. For example, if Jenny finds her house in a mess when she returns from work, and remembers that she left a window open, she can hypothesize that a thief broke into her house and caused the mess, as the most plausible explanation. While abduction has long been considered to be at the core of how people interpret and read between the lines in natural language (Hobbs et al., 1988), there has been relatively little research in support of abductive natural language inference and generation. We present the first study that investigates the viability of language-based abductive reasoning. We introduce a challenge dataset, ART, that consists of over 20k commonsense narrative contexts and 200k explanations. Based on this dataset, we conceptualize two new tasks -- (i) Abductive NLI: a multiple-choice question answering task for choosing the more likely explanation, and (ii) Abductive NLG: a conditional generation task for explaining given observations in natural language. On Abductive NLI, the best model achieves 68.9% accuracy, well below human performance of 91.4%. On Abductive NLG, the current best language generators struggle even more, as they lack reasoning capabilities that are trivial for humans. Our analysis leads to new insights into the types of reasoning that deep pre-trained language models fail to perform--despite their strong performance on the related but more narrowly defined task of entailment NLI--pointing to interesting avenues for future research."
+        },
+        "metadata_creator": "UnknownData",
+        "metadata_external_source": [
+            "PapersWithCode Data Dump"
+        ]
+    },
+    "18": {
+        "dataset_entity": "ART Dataset",
+        "dataset_homepage": "http://abductivecommonsense.xyz/",
+        "dataset_author": [
+            {
+                "author_name": "Chandra Bhagavatula"
+            },
+            {
+                "author_name": "Ronan Le Bras"
+            },
+            {
+                "author_name": "Chaitanya Malaviya"
+            },
+            {
+                "author_name": "Keisuke Sakaguchi"
+            },
+            {
+                "author_name": "Ari Holtzman"
+            },
+            {
+                "author_name": "Hannah Rashkin"
+            },
+            {
+                "author_name": "Doug Downey"
+            },
+            {
+                "author_name": "Scott Wen-tau Yih"
+            },
+            {
+                "author_name": "Yejin Choi"
+            }
+        ],
+        "dataset_introduced_date": "2019-08-15",
+        "matched_mention": "the SemArt dataset",
+        "matched_context": "To create the SemArt dataset, we collect artistic data from the Web Gallery of Art (WGA), a website with more than 44,809 images of European fine-art reproductions between the 8th and the 19th century.",
+        "mentioned_in_paper": "1810.09617",
+        "source_paper": {
+            "paper_title": "Abductive Commonsense Reasoning",
+            "paper_authors": [
+                {
+                    "author_name": "Chandra Bhagavatula"
+                },
+                {
+                    "author_name": "Ronan Le Bras"
+                },
+                {
+                    "author_name": "Chaitanya Malaviya"
+                },
+                {
+                    "author_name": "Keisuke Sakaguchi"
+                },
+                {
+                    "author_name": "Ari Holtzman"
+                },
+                {
+                    "author_name": "Hannah Rashkin"
+                },
+                {
+                    "author_name": "Doug Downey"
+                },
+                {
+                    "author_name": "Scott Wen-tau Yih"
+                },
+                {
+                    "author_name": "Yejin Choi"
+                }
+            ],
+            "paper_url": "https://paperswithcode.com/paper/abductive-commonsense-reasoning",
+            "paper_arxiv_id": "1908.05739",
+            "paper_date": "2019-08-15",
+            "paper_url_pdf": "https://arxiv.org/pdf/1908.05739v2.pdf",
+            "paper_tasks": [
+                "Multiple-choice",
+                "Natural Language Inference",
+                "Question Answering"
+            ],
+            "paper_proceeding": "ICLR 2020 1",
+            "paper_abstract": "Abductive reasoning is inference to the most plausible explanation. For example, if Jenny finds her house in a mess when she returns from work, and remembers that she left a window open, she can hypothesize that a thief broke into her house and caused the mess, as the most plausible explanation. While abduction has long been considered to be at the core of how people interpret and read between the lines in natural language (Hobbs et al., 1988), there has been relatively little research in support of abductive natural language inference and generation. We present the first study that investigates the viability of language-based abductive reasoning. We introduce a challenge dataset, ART, that consists of over 20k commonsense narrative contexts and 200k explanations. Based on this dataset, we conceptualize two new tasks -- (i) Abductive NLI: a multiple-choice question answering task for choosing the more likely explanation, and (ii) Abductive NLG: a conditional generation task for explaining given observations in natural language. On Abductive NLI, the best model achieves 68.9% accuracy, well below human performance of 91.4%. On Abductive NLG, the current best language generators struggle even more, as they lack reasoning capabilities that are trivial for humans. Our analysis leads to new insights into the types of reasoning that deep pre-trained language models fail to perform--despite their strong performance on the related but more narrowly defined task of entailment NLI--pointing to interesting avenues for future research."
+        },
+        "metadata_creator": "UnknownData",
+        "metadata_external_source": [
+            "PapersWithCode Data Dump"
+        ]
+    },
+    "19": {
+        "dataset_entity": "ART Dataset",
+        "dataset_homepage": "http://abductivecommonsense.xyz/",
+        "dataset_author": [
+            {
+                "author_name": "Chandra Bhagavatula"
+            },
+            {
+                "author_name": "Ronan Le Bras"
+            },
+            {
+                "author_name": "Chaitanya Malaviya"
+            },
+            {
+                "author_name": "Keisuke Sakaguchi"
+            },
+            {
+                "author_name": "Ari Holtzman"
+            },
+            {
+                "author_name": "Hannah Rashkin"
+            },
+            {
+                "author_name": "Doug Downey"
+            },
+            {
+                "author_name": "Scott Wen-tau Yih"
+            },
+            {
+                "author_name": "Yejin Choi"
+            }
+        ],
+        "dataset_introduced_date": "2019-08-15",
+        "matched_mention": "We presented the SemArt dataset",
+        "matched_context": "We presented the SemArt dataset, the first collection of fine-art images with attributes and artistic comments for semantic art understanding.",
+        "mentioned_in_paper": "1810.09617",
+        "source_paper": {
+            "paper_title": "Abductive Commonsense Reasoning",
+            "paper_authors": [
+                {
+                    "author_name": "Chandra Bhagavatula"
+                },
+                {
+                    "author_name": "Ronan Le Bras"
+                },
+                {
+                    "author_name": "Chaitanya Malaviya"
+                },
+                {
+                    "author_name": "Keisuke Sakaguchi"
+                },
+                {
+                    "author_name": "Ari Holtzman"
+                },
+                {
+                    "author_name": "Hannah Rashkin"
+                },
+                {
+                    "author_name": "Doug Downey"
+                },
+                {
+                    "author_name": "Scott Wen-tau Yih"
+                },
+                {
+                    "author_name": "Yejin Choi"
+                }
+            ],
+            "paper_url": "https://paperswithcode.com/paper/abductive-commonsense-reasoning",
+            "paper_arxiv_id": "1908.05739",
+            "paper_date": "2019-08-15",
+            "paper_url_pdf": "https://arxiv.org/pdf/1908.05739v2.pdf",
+            "paper_tasks": [
+                "Multiple-choice",
+                "Natural Language Inference",
+                "Question Answering"
+            ],
+            "paper_proceeding": "ICLR 2020 1",
+            "paper_abstract": "Abductive reasoning is inference to the most plausible explanation. For example, if Jenny finds her house in a mess when she returns from work, and remembers that she left a window open, she can hypothesize that a thief broke into her house and caused the mess, as the most plausible explanation. While abduction has long been considered to be at the core of how people interpret and read between the lines in natural language (Hobbs et al., 1988), there has been relatively little research in support of abductive natural language inference and generation. We present the first study that investigates the viability of language-based abductive reasoning. We introduce a challenge dataset, ART, that consists of over 20k commonsense narrative contexts and 200k explanations. Based on this dataset, we conceptualize two new tasks -- (i) Abductive NLI: a multiple-choice question answering task for choosing the more likely explanation, and (ii) Abductive NLG: a conditional generation task for explaining given observations in natural language. On Abductive NLI, the best model achieves 68.9% accuracy, well below human performance of 91.4%. On Abductive NLG, the current best language generators struggle even more, as they lack reasoning capabilities that are trivial for humans. Our analysis leads to new insights into the types of reasoning that deep pre-trained language models fail to perform--despite their strong performance on the related but more narrowly defined task of entailment NLI--pointing to interesting avenues for future research."
+        },
+        "metadata_creator": "UnknownData",
+        "metadata_external_source": [
+            "PapersWithCode Data Dump"
+        ]
+    },
+    "20": {
+        "dataset_entity": "BIRD",
+        "dataset_homepage": "https://asu-active-perception-group.github.io/bird_dataset_web/",
+        "dataset_author": [
+            {
+                "author_name": "Tejas Gokhale"
+            },
+            {
+                "author_name": "Shailaja Sampat"
+            },
+            {
+                "author_name": "Zhiyuan Fang"
+            },
+            {
+                "author_name": "Yezhou Yang"
+            },
+            {
+                "author_name": "Chitta Baral"
+            }
+        ],
+        "dataset_introduced_date": "2019-05-28",
+        "matched_mention": "a bird dataset",
+        "matched_context": "(3) CUB-200 is a bird dataset for fine-grained recognition.",
+        "mentioned_in_paper": "1807.07437",
+        "source_paper": {
+            "paper_title": "Blocksworld Revisited: Learning and Reasoning to Generate Event-Sequences from Image Pairs",
+            "paper_authors": [
+                {
+                    "author_name": "Tejas Gokhale"
+                },
+                {
+                    "author_name": "Shailaja Sampat"
+                },
+                {
+                    "author_name": "Zhiyuan Fang"
+                },
+                {
+                    "author_name": "Yezhou Yang"
+                },
+                {
+                    "author_name": "Chitta Baral"
+                }
+            ],
+            "paper_url": "https://paperswithcode.com/paper/blocksworld-revisited-learning-and-reasoning",
+            "paper_arxiv_id": "1905.12042",
+            "paper_date": "2019-05-28",
+            "paper_url_pdf": "https://arxiv.org/pdf/1905.12042v1.pdf",
+            "paper_tasks": [],
+            "paper_proceeding": null,
+            "paper_abstract": "The process of identifying changes or transformations in a scene along with the ability of reasoning about their causes and effects, is a key aspect of intelligence. In this work we go beyond recent advances in computational perception, and introduce a more challenging task, Image-based Event-Sequencing (IES). In IES, the task is to predict a sequence of actions required to rearrange objects from the configuration in an input source image to the one in the target image. IES also requires systems to possess inductive generalizability. Motivated from evidence in cognitive development, we compile the first IES dataset, the Blocksworld Image Reasoning Dataset (BIRD) which contains images of wooden blocks in different configurations, and the sequence of moves to rearrange one configuration to the other. We first explore the use of existing deep learning architectures and show that these end-to-end methods under-perform in inferring temporal event-sequences and fail at inductive generalization. We then propose a modular two-step approach: Visual Perception followed by Event-Sequencing, and demonstrate improved performance by combining learning and reasoning. Finally, by showing an extension of our approach on natural images, we seek to pave the way for future research on event sequencing for real world scenes."
+        },
+        "metadata_creator": "UnknownData",
+        "metadata_external_source": [
+            "PapersWithCode Data Dump"
+        ]
+    }
+}
