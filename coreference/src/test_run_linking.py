@@ -28,7 +28,9 @@ def read_tsv2dict(filepath):
     return res_dict
 
 def run_test_entity_linking():
-    dataset_mention_metadata_dir = '/data/mentions/results/' 
+    dataset_mention_metadata_dir = '/data/mentions/' 
+    pdf_mention_file = 'pdfs_extraction.json'
+
     dataset_mention_metadata_file = '/app/data/sample3_dataset_mention_metadata.json'
     paper_id_mapping_file = '/app/data/sample_3_paper_id_mapping.tsv'
     extra_dataset_metadata_file = '/app/data/matched_dataset_paper_metadata.json'
@@ -36,6 +38,7 @@ def run_test_entity_linking():
     #     if os.path.isfile(os.path.join(dataset_mention_metadata_dir, f)):
     #         extraction_res = read_extract_csv(os.path.join(dataset_mention_metadata_dir, f))
     all_mentions_metadata = read_json(dataset_mention_metadata_file)
+    all_mentions_metdata = read_json(os.path.join(dataset_mention_metadata_dir, pdf_mention_file))
     extraction_res = all_mentions_metadata[:200]
     # print(len(extraction_res))
     metadata_db = read_dataset_metadata_from_file('/app/data/datasets.json.gz')
@@ -56,7 +59,7 @@ def run_test_entity_linking():
             linked_res[k]['dataset_introduced_date'] = _metadata['paper_date']
             linked_res[k]['metadata_creator'] = 'UnknownData'
             linked_res[k]['metadata_external_source'] = ['PapersWithCode Data Dump']
-    with open('/data/coreference/test_output.json', 'w') as fw:
+    with open('/data/coreference/pdf_output.json', 'w') as fw:
         json.dump(linked_res, fw, indent=4)
     return linked_res
 
