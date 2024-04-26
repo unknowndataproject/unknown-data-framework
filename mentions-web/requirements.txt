@@ -1,0 +1,8 @@
+warcio==1.7.4
+beautifulsoup4==4.11.2
+PyYAML==6.0
+torch==1.11.0
+tqdm==4.62.3
+transformers==4.17.0
+resiliparse
+fastwarc
