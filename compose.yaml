@@ -8,8 +8,8 @@ services:
       - ./data/dblp-export:/data/dblp-export
       - ./data/gesis-export:/data/gesis-export
 
-  web-mentions:
-    build: ./web-mentions/
+  mentions-web:
+    build: ./mentions-web/
     volumes:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
@@ -29,8 +29,8 @@ services:
       timeout: 10s
       retries: 5
 
-  mentions:
-    build: ./mentions
+  mentions-pdf:
+    build: ./mentions-pdf/
     volumes:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
@@ -50,9 +50,9 @@ services:
       - ./data/dblp-export:/data/dblp-export
       - ./data/gesis-export:/data/gesis-export
     depends_on:
-      web-mentions:
+      mentions-web:
         condition: service_completed_successfully
-      mentions:
+      mentions-pdf:
         condition: service_completed_successfully
 
   dblp-export:
@@ -72,7 +72,6 @@ services:
     volumes:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
-      - ./data/coreference:/data/coreference
       - ./data/dblp-export:/data/dblp-export
       - ./data/gesis-export:/data/gesis-export
     depends_on:
