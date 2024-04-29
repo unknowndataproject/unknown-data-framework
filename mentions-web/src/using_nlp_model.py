@@ -13,12 +13,13 @@ question = "On which data the study is based?"
 # 1 "Is there any use of data collected from a survey"
 # 0 "What data are used?" #
 
+print("\nDownloading Model from huggingface...")
 model_checkpoint = "Yousef-Cot/dataset-mention-extractor"  #f"src/resources/models/fold{exp}"
 tokenizer = AutoTokenizer.from_pretrained(model_checkpoint)
 model = AutoModelForQuestionAnswering.from_pretrained(model_checkpoint)
 
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
-pipe = pipeline("question-answering",model=model,tokenizer = tokenizer)
+pipe = pipeline("question-answering",model=model,tokenizer = tokenizer,padding=True, truncation=True)
 
 
 def get_model_preds_on_one_sentence(sentence,strict_extraction):
