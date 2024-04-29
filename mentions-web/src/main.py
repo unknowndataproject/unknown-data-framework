@@ -120,6 +120,7 @@ def fast_extract_webpages_from_warc(warc_file_path, output_directory):
                         #extract dataset mentions from sentences
                         record_data['matches'] = unlp.handle_matched_sentences(record_data['matches'],config.strict_threshold)
 
+                    if len(record_data['matches']) > 0:
                         # save the results
                         of.write(json.dumps(record_data).encode('utf-8'))
                         of.write("\n".encode('utf-8'))
