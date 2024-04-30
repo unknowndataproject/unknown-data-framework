@@ -1,5 +1,6 @@
 from entity_linking import dataset_linking
 from database_access import read_dataset_metadata_from_file
+import gzip
 import json
 import os
 from pprint import pprint
@@ -9,6 +10,12 @@ def read_json(filepath):
     with open(filepath, 'r') as fr:
         d = json.load(fr)
     return d
+
+def read_json_gz(filepath):
+    with gzip.open(filepath, 'rb') as fr:
+        d = json.load(fr)
+    return d
+
 
 def read_extraction_csv(filepath):
     with open(filepath, 'r') as fr:
@@ -65,6 +72,16 @@ def run_test_entity_linking():
             linked_res[k]['metadata_external_source'] = ['PapersWithCode Data Dump']
     with open('/data/coreference/pdf_output.json', 'w') as fw:
         json.dump(linked_res, fw, indent=4)
+
+
+    """
+    Link to web mentions
+    """
+    web_mention_file = 'web-mentions/00000.gz'
+    web_mention_metadata = read_json_gz(os.path.join(dataset_mention_metadata_dir, web_mention_file))
+    linked_web_res = {}
+    with open('/data/coreference/web_output.json', 'w') as fw:
+        json.dump(linked_web_res, fw, indent=4)
     return linked_res
 
 # print(os.getcwd())
