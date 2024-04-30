@@ -7,7 +7,6 @@ nlp = spacy.load('en_core_web_md')
 def dataset_linking(extraction_input, dataset_df): 
     """
     extraction input is a list of records of extracted dataset metadata:
-    - dataset_mention: str, is a substring of dataset_context 
     - dataset_context: str, the sentence context of dataset_mention
     - mention_start, mention_end: int, int, the starting and ending positions of mention substring in context
     - URL_in_context (optional): (URL_text, URL_start, URL_end) 
@@ -26,8 +25,10 @@ def dataset_linking(extraction_input, dataset_df):
             candid_ents = []
             for idx, (dataset_name, dataset_homepage, dataset_date) in enumerate(zip(dataset_df['name'], dataset_df['homepage'],dataset_df['introduced_date'])):
                 # find candidates
-                if dataset_name.lower() in ee['dataset_mention'].lower():
-                    score = nlp(dataset_name.lower()).similarity(nlp(ee['dataset_mention'].lower()))
+                mention_start, mention_end = ee['mention_start'], ee['mention_end']
+                dataset_mention = ee['dataset_context'][mention_start:mention_end]
+                if dataset_name.lower() in dataset_mention.lower():
+                    score = nlp(dataset_name.lower()).similarity(nlp(dataset_mention.lower()))
                     # print('score: ', score)
                     candid_ents.append({'name':dataset_name, 'homepage': dataset_homepage, 'score': score})
                 else:
@@ -40,13 +41,13 @@ def dataset_linking(extraction_input, dataset_df):
                 if score > 0:
                     matched = True
                     cnt += 1
-                    print('Found a match {}:\n\tEntity from database: {}\n\tMatched mention: {}\n\tContext: {}'.format(score, dataset_name, ee['dataset_mention'], ee['dataset_context']))
+                    print('Found a match {}:\n\tEntity from database: {}\n\tMatched mention: {}\n\tContext: {}'.format(score, dataset_name, dataset_mention, ee['dataset_context']))
                     res[cnt] = {
                     'dataset_entity':dataset_name, 
                     'dataset_homepage': dataset_homepage,
                     'dataset_author': '',
                     'dataset_introduced_date': dataset_date,
-                    'matched_mention': ee['dataset_mention'], 
+                    'matched_mention': dataset_mention, 
                     'matched_context': ee['dataset_context'],
                     'mentioned_in_paper': ee['mentioned_in_paper'], 
                     }

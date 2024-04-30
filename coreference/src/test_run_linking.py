@@ -37,9 +37,13 @@ def run_test_entity_linking():
     # for f in os.listdir(dataset_mention_metadata_dir):
     #     if os.path.isfile(os.path.join(dataset_mention_metadata_dir, f)):
     #         extraction_res = read_extract_csv(os.path.join(dataset_mention_metadata_dir, f))
-    all_mentions_metadata = read_json(dataset_mention_metadata_file)
-    all_mentions_metdata = read_json(os.path.join(dataset_mention_metadata_dir, pdf_mention_file))
-    extraction_res = all_mentions_metadata[:200]
+    # all_mentions_metadata = read_json(dataset_mention_metadata_file)
+    
+    """
+    Link to pdf mentions
+    """
+    all_mentions_metadata = read_json(os.path.join(dataset_mention_metadata_dir, pdf_mention_file))
+    extraction_res = all_mentions_metadata[:]
     # print(len(extraction_res))
     metadata_db = read_dataset_metadata_from_file('/app/data/datasets.json.gz')
     extra_metadata_db = read_json(extra_dataset_metadata_file)
@@ -48,7 +52,7 @@ def run_test_entity_linking():
     linked_res = dataset_linking(extraction_res, metadata_db)
     paper_id_mapping = read_tsv2dict(paper_id_mapping_file)
     # print(paper_id_mapping) 
-    linked_res = {k: {kk:vv if not kk=='mentioned_in_paper' else paper_id_mapping[vv] for kk, vv in v.items()} for k,v in linked_res.items()}
+    linked_res = {k: {kk:vv if not kk=='mentioned_in_paper'  else vv for kk, vv in v.items()} for k,v in linked_res.items()}
     
     for k,v in linked_res.items():
         dataset_name = v['dataset_entity']
