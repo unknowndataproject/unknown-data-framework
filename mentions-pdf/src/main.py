@@ -2,8 +2,7 @@
 '''
 In this module
 first apply the heuristic input
-then search for dataset mention
-and if not found apply NLp model
+then apply NLp model
 
 The model first copy a list of 10 pdfs to its local directory and work on them and when it is does it remove them and copy another until it hanldes all pdfs.
 '''
@@ -148,7 +147,7 @@ for i in range(0,len(pdf_list), batch_size): #math.ceil(len(pdf_list)/batch_size
                 strict_extractor = False if len(sentences) < config.strict_threshold else True
                 prediction = unlp.get_model_preds_on_one_sentence(sent['text'],strict_extraction=strict_extractor)
                 if prediction['start'] != prediction['end']:
-                    utils.text_highligher(sent['text'],prediction['start'],prediction['end'],"RED")
+                    #utils.text_highligher(sent['text'],prediction['start'],prediction['end'],"RED")
                     #add extaction output to a dictionary
                     file_extraction_result["mentioned_in_paper"] = tei_file
                     file_extraction_result["context_id"]= sent["idx"]

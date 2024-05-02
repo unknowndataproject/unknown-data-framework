@@ -16,7 +16,7 @@ tokenizer = AutoTokenizer.from_pretrained(model_checkpoint)
 model = AutoModelForQuestionAnswering.from_pretrained(model_checkpoint)
 
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
-pipe = pipeline("question-answering",model=model,tokenizer = tokenizer)
+pipe = pipeline("question-answering",model=model,tokenizer = tokenizer,padding=True, truncation=True)
 
 
 def get_model_preds_on_one_sentence(sentence,strict_extraction):
