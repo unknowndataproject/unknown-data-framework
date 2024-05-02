@@ -129,7 +129,7 @@ class TeiExtractor:
                 text, annos = _add_extraction(content, paragraph, sep)
                 first_p = False
             else:
-                #print("not handled:", tag)
+                print("not handled:", tag)
                 pass
                 #print(f"\r{element.tag} is not handled", end="")
         annos["Div"] = [dict(begin=0, end=len(text))]
@@ -230,7 +230,7 @@ class TeiExtractor:
                 elif ref_type == "formula":
                     ref_type = "ReferenceToFormula"
                 else:
-                    #print(ref_type + " not known")
+                    print(ref_type + " not known")
                     ref_type = "ReferenceUnknown"
                 child_anno = dict(begin=0, end=len(text_ref))
                 if target:
@@ -246,8 +246,7 @@ class TeiExtractor:
                         text += " "
                     text += child.tail.strip()
             else:
-                #print(tag, "not known")
-                pass
+                print(tag, "not known")
             #print(etree.tostring(child))
             #text = text[:text.rfind("\n")]
             #if child.text:

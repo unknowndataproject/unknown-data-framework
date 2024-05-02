@@ -1,10 +1,10 @@
 web_dir: "./resources/warc_dir"
 pdf_dir: "./src/resources/data/in_pdfs"
 grobid_pdf_dir: "./src/resources/temp_pdf"
-tei_dir: "/data/mentions/out_tei/"
-grobid_config: "./grobid_client_python/config.json"
+tei_dir: "/data/mentions/out_tei/"  #"./src/resources/data/out_tei"
+grobid_config: "./grobid_client_python/config.json" #
 known_dataset_file: "known_datasets.txt"
-log_file: "/data/mentions/pdf_extraction_log.txt"
+log_file: "/data/mentions/logs.txt" #"./src/resources/data/logs.txt"
 extraction_dir: "/data/mentions/results" #./src/resources/data/results"
 results_in_json: "/data/mentions/pdfs_extraction.json"
 model_checkpoint: "./resources/models/best_model/fold{exp}"
