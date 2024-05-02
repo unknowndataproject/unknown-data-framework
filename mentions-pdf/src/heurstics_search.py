@@ -53,7 +53,7 @@ def search_pattern_in_tei_file(sents, pattern, save_to=None):
                 first_match = res[0]
                 start, end = first_match.span()
                 #sentence id, sentence text, dataset mention, start, end
-                print(sent['text'])
+                #print(sent['text'])
                 list_of_sents.append((sent['idx'],sent['text'], sent['text'][start:end+1],start, end))
                 matched_sentence_indexes.add(sent['idx'])
     except Exception as e:

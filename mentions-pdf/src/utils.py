@@ -2,6 +2,8 @@
 wide functionality like logging etc..'''
 
 import os
+from pathlib import Path
+
 import shutil
 
 from colorama import Fore,Style
@@ -69,8 +71,8 @@ def text_highligher(text, start, end, color):
 
 def copy_pdf_files(file_list,source_dir, destination_dir):
     for file_name in file_list:
-        source_path = os.path.join(source_dir,file_name)
-        destination_path = os.path.join(destination_dir, os.path.basename(file_name))
+        source_path = Path(source_dir) / file_name
+        destination_path = Path(destination_dir) / file_name
 
         try:
           shutil.copy(source_path, destination_path)
