@@ -19,4 +19,4 @@ COPY src/config.yaml .
 # Copies everything in the local folder `./mentions/` into the container folder `/app`
 COPY . .
 
-CMD ["python3", "./src/main.py"]
+CMD ["python3", "./src/main_mentions-web.py"]
