@@ -2,7 +2,7 @@ from entity_linking import dataset_linking
 from database_access import read_dataset_metadata_from_file
 import gzip
 import json
-import os
+from pathlib import Path
 from pprint import pprint
 
 
@@ -49,7 +49,7 @@ def run_test_entity_linking():
     """
     Link to pdf mentions
     """
-    all_mentions_metadata = read_json(os.path.join(dataset_mention_metadata_dir, pdf_mention_file))
+    all_mentions_metadata = read_json(Path(dataset_mention_metadata_dir).joinpath(pdf_mention_file))
     extraction_res = all_mentions_metadata[:]
     # print(len(extraction_res))
     metadata_db = read_dataset_metadata_from_file('/app/data/datasets.json.gz')
@@ -78,8 +78,14 @@ def run_test_entity_linking():
     Link to web mentions
     """
     web_mention_file = 'web-mentions/00000.gz'
-    web_mention_metadata = read_json_gz(os.path.join(dataset_mention_metadata_dir, web_mention_file))
-    linked_web_res = {}
+    web_mention_metadata = read_json_gz(Path(dataset_mention_metadata_dir).joinpath(web_mention_file))
+    pprint(web_mention_metadata)
+    formated_web_mention_metadata = [{'mentioned_in_paper': '', 
+                                       'dataset_context': e[0],
+                                       'mention_start': e[-2], 
+                                       'mention_end': e[-1],} for e in web_mention_metadata['matches']]
+    pprint(formated_web_mention_metadata)
+    linked_web_res = dataset_linking(formated_web_mention_metadata, metadata_db)
     with open('/data/coreference/web_output.json', 'w') as fw:
         json.dump(linked_web_res, fw, indent=4)
     return linked_res
