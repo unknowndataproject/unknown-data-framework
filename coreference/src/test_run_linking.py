@@ -11,10 +11,14 @@ def read_json(filepath):
         d = json.load(fr)
     return d
 
-def read_json_gz(filepath):
+def read_jsonl_gz(filepath):
+    res = []
     with gzip.open(filepath, 'rb') as fr:
-        d = json.load(fr)
-    return d
+        json_list = list(fr)
+        for e in json_list:
+            d = json.loads(e)
+            res.append(d)
+    return res
 
 
 def read_extraction_csv(filepath):
@@ -78,13 +82,16 @@ def run_test_entity_linking():
     Link to web mentions
     """
     web_mention_file = 'web-mentions/00000.gz'
-    web_mention_metadata = read_json_gz(Path(dataset_mention_metadata_dir).joinpath(web_mention_file))
-    pprint(web_mention_metadata)
-    formated_web_mention_metadata = [{'mentioned_in_paper': '', 
-                                       'dataset_context': e[0],
-                                       'mention_start': e[-2], 
-                                       'mention_end': e[-1],} for e in web_mention_metadata['matches']]
-    pprint(formated_web_mention_metadata)
+    web_mention_metadata = read_jsonl_gz(Path(dataset_mention_metadata_dir).joinpath(web_mention_file))
+    # pprint(web_mention_metadata)
+    formated_web_mention_metadata = []
+    for e in web_mention_metadata:
+        for m in e['matches']:
+            formated_web_mention_metadata.append({'mentioned_in_paper': e['uri'], 
+                                       'dataset_context': m[0],
+                                       'mention_start': m[-2], 
+                                       'mention_end': m[-1]})
+    # pprint(formated_web_mention_metadata)
     linked_web_res = dataset_linking(formated_web_mention_metadata, metadata_db)
     with open('/data/coreference/web_output.json', 'w') as fw:
         json.dump(linked_web_res, fw, indent=4)
