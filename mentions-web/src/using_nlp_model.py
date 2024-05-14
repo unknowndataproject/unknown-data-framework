@@ -13,7 +13,6 @@ question = "On which data the study is based?"
 # 1 "Is there any use of data collected from a survey"
 # 0 "What data are used?" #
 
-print("\nDownloading Model from huggingface...")
 model_checkpoint = "Yousef-Cot/dataset-mention-extractor"
 local_model_folder= "/data/mentions/model"
 
