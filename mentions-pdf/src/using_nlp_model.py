@@ -3,6 +3,7 @@ from transformers import pipeline,AutoTokenizer,AutoModelForQuestionAnswering
 from tqdm import tqdm
 import re
 
+
 exp=3
 question = "On which data the study is based?"
 # 4 "Which data samples or images are used"
@@ -11,9 +12,11 @@ question = "On which data the study is based?"
 # 1 "Is there any use of data collected from a survey"
 # 0 "What data are used?" #
 
-model_checkpoint = "Yousef-Cot/dataset-mention-extractor"  #f"src/resources/models/fold{exp}"
-tokenizer = AutoTokenizer.from_pretrained(model_checkpoint)
-model = AutoModelForQuestionAnswering.from_pretrained(model_checkpoint)
+model_checkpoint = "Yousef-Cot/dataset-mention-extractor"
+local_model_folder= "/data/mentions/model"
+
+tokenizer = AutoTokenizer.from_pretrained(model_checkpoint,cache_dir=local_model_folder)
+model = AutoModelForQuestionAnswering.from_pretrained(model_checkpoint, cache_dir=local_model_folder)
 
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 pipe = pipeline("question-answering",model=model,tokenizer = tokenizer,padding=True, truncation=True)
