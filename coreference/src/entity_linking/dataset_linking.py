@@ -17,6 +17,8 @@ def dataset_linking(extraction_input, dataset_df):
     try:
         cnt = 0 
         res = {}
+        missed = {}
+        mis_cnt = 0
         for ee in extraction_input:
             matched = False
             # filter candidate mentions
@@ -38,7 +40,7 @@ def dataset_linking(extraction_input, dataset_df):
             if len(candid_ents) > 0:
                 sorted_candid_ents = sorted(candid_ents,key=lambda x: x['score'], reverse=True) 
                 dataset_name, dataset_homepage, score = sorted_candid_ents[0]['name'], sorted_candid_ents[0]['homepage'], sorted_candid_ents[0]['score']
-                if score > 0:
+                if score > 0.5:
                     matched = True
                     cnt += 1
                     print('Found a match {}:\n\tEntity from database: {}\n\tMatched mention: {}\n\tContext: {}'.format(score, dataset_name, dataset_mention, ee['dataset_context']))
@@ -52,11 +54,13 @@ def dataset_linking(extraction_input, dataset_df):
                     'mentioned_in_paper': ee['mentioned_in_paper'], 
                     }
             if not matched:
-                # print('Mention:', ee['dataset_mention'],'\nContext:', ee['dataset_context'], '\n')
+                print('Miss a mention:', dataset_mention,'\nContext:', ee['dataset_context'], '\n')
+                missed[mis_cnt] = {'missed_mention': dataset_mention}
+                mis_cnt += 1
                 pass
 
         print(cnt)
-        return res
+        return res, missed
     except Exception as e:
         raise e
     # match dataset URL

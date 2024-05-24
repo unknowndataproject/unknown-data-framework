@@ -60,7 +60,8 @@ def run_test_entity_linking():
     extra_metadata_db = read_json(extra_dataset_metadata_file)
     extra_metadata_dict = { e['dataset_name']: {k: v if not k =='paper_authors' else [{'author_name': author} for author in v] for k,v in e.items()} for e in extra_metadata_db}
 
-    linked_res = dataset_linking(extraction_res, metadata_db)
+    linked_res, missed_mentions_pdf = dataset_linking(extraction_res, metadata_db)
+    pprint(missed_mentions_pdf)
     paper_id_mapping = read_tsv2dict(paper_id_mapping_file)
     # print(paper_id_mapping) 
     linked_res = {k: {kk:vv if not kk=='mentioned_in_paper'  else vv for kk, vv in v.items()} for k,v in linked_res.items()}
@@ -92,7 +93,8 @@ def run_test_entity_linking():
                                        'mention_start': m[-2], 
                                        'mention_end': m[-1]})
     # pprint(formated_web_mention_metadata)
-    linked_web_res = dataset_linking(formated_web_mention_metadata, metadata_db)
+    linked_web_res, missed_mentions_web = dataset_linking(formated_web_mention_metadata, metadata_db)
+    pprint(missed_mentions_web)
     with open('/data/coreference/web_output.json', 'w') as fw:
         json.dump(linked_web_res, fw, indent=4)
     return linked_res
