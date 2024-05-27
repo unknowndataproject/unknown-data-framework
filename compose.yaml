@@ -1,6 +1,7 @@
 services:
   crawler:
     build: ./crawler/
+    user: "${UID}:${GID}"
     volumes:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
@@ -10,6 +11,9 @@ services:
 
   mentions-web:
     build: ./mentions-web/
+    user: "${UID}:${GID}"
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=7  # GPU ID you want to use
     volumes:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
@@ -28,6 +32,9 @@ services:
 
   grobid-service:
     image: grobid/grobid:0.8.0
+    user: "${UID}:${GID}"
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=5  # GPU ID you want to use
     restart: "unless-stopped"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://grobid-service:8070/api/isalive"]
@@ -42,6 +49,9 @@ services:
 
   mentions-pdf:
     build: ./mentions-pdf/
+    user: "${UID}:${GID}"
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=6  # GPU ID you want to use
     volumes:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
@@ -54,6 +64,7 @@ services:
 
   coreference:
     build: ./coreference/
+    user: "${UID}:${GID}"
     volumes:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
@@ -68,6 +79,7 @@ services:
 
   dblp-export:
     build: ./dblp-export/
+    user: "${UID}:${GID}"
     volumes:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
@@ -80,6 +92,7 @@ services:
 
   gesis-export:
     build: ./gesis-export/
+    user: "${UID}:${GID}"
     volumes:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
