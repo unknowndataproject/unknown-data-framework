@@ -16,6 +16,12 @@ services:
       - ./data/coreference:/data/coreference
       - ./data/dblp-export:/data/dblp-export
       - ./data/gesis-export:/data/gesis-export
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+            - capabilities: [gpu]
     depends_on:
       crawler:
         condition: service_completed_successfully
@@ -28,6 +34,11 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
 
   mentions-pdf:
     build: ./mentions-pdf/

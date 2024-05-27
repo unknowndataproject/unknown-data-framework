@@ -16,11 +16,16 @@ question = "On which data the study is based?"
 model_checkpoint = "Yousef-Cot/dataset-mention-extractor"
 local_model_folder= "/data/mentions/model"
 
+device = 0 if torch.cuda.is_available() else -1
+
+print(device)
+print("*******************")
+
 tokenizer = AutoTokenizer.from_pretrained(model_checkpoint,cache_dir=local_model_folder)
 model = AutoModelForQuestionAnswering.from_pretrained(model_checkpoint,cache_dir=local_model_folder)
 
-device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
-pipe = pipeline("question-answering",model=model,tokenizer = tokenizer,padding=True, truncation=True)
+
+pipe = pipeline("question-answering",model=model,tokenizer = tokenizer,padding=True, truncation=True,device=device)
 
 
 def get_model_preds_on_one_sentence(sentence,strict_extraction):
