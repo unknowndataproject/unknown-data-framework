@@ -1,4 +1,5 @@
-FROM ubuntu:22.04
+# Use the NVIDIA base image for Ubuntu 22.04 and your architecture
+FROM nvcr.io/nvidia/cuda:12.4.0-devel-ubuntu22.04
 
 # Changes working directory to `/app` within docker image
 WORKDIR /app

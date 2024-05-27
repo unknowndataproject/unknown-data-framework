@@ -10,33 +10,54 @@ services:
 
   mentions-web:
     build: ./mentions-web/
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=2  # GPU ID you want to use
     volumes:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
       - ./data/coreference:/data/coreference
       - ./data/dblp-export:/data/dblp-export
       - ./data/gesis-export:/data/gesis-export
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
     depends_on:
       crawler:
         condition: service_completed_successfully
 
   grobid-service:
     image: grobid/grobid:0.8.0
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=5  # GPU ID you want to use
     restart: "unless-stopped"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://grobid-service:8070/api/isalive"]
       interval: 30s
       timeout: 10s
       retries: 5
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
 
   mentions-pdf:
     build: ./mentions-pdf/
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=7  # GPU ID you want to use
     volumes:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
       - ./data/coreference:/data/coreference
       - ./data/dblp-export:/data/dblp-export
       - ./data/gesis-export:/data/gesis-export
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
     depends_on:
       grobid-service:
         condition: service_healthy
