@@ -1,7 +1,6 @@
 services:
   crawler:
     build: ./crawler/
-    user: "${UID}:${GID}"
     volumes:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
@@ -11,9 +10,8 @@ services:
 
   mentions-web:
     build: ./mentions-web/
-    user: "${UID}:${GID}"
     environment:
-      - NVIDIA_VISIBLE_DEVICES=7  # GPU ID you want to use
+      - NVIDIA_VISIBLE_DEVICES=2  # GPU ID you want to use
     volumes:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
@@ -24,7 +22,6 @@ services:
       resources:
         reservations:
           devices:
-            - driver: nvidia
             - capabilities: [gpu]
     depends_on:
       crawler:
@@ -32,7 +29,6 @@ services:
 
   grobid-service:
     image: grobid/grobid:0.8.0
-    user: "${UID}:${GID}"
     environment:
       - NVIDIA_VISIBLE_DEVICES=5  # GPU ID you want to use
     restart: "unless-stopped"
@@ -49,22 +45,25 @@ services:
 
   mentions-pdf:
     build: ./mentions-pdf/
-    user: "${UID}:${GID}"
     environment:
-      - NVIDIA_VISIBLE_DEVICES=6  # GPU ID you want to use
+      - NVIDIA_VISIBLE_DEVICES=7  # GPU ID you want to use
     volumes:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
       - ./data/coreference:/data/coreference
       - ./data/dblp-export:/data/dblp-export
       - ./data/gesis-export:/data/gesis-export
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
     depends_on:
       grobid-service:
         condition: service_healthy
 
   coreference:
     build: ./coreference/
-    user: "${UID}:${GID}"
     volumes:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
@@ -79,7 +78,6 @@ services:
 
   dblp-export:
     build: ./dblp-export/
-    user: "${UID}:${GID}"
     volumes:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
@@ -92,7 +90,6 @@ services:
 
   gesis-export:
     build: ./gesis-export/
-    user: "${UID}:${GID}"
     volumes:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions

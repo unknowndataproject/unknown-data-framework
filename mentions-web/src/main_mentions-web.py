@@ -105,8 +105,8 @@ def fast_extract_webpages_from_warc(warc_file_path, output_directory):
                     record_data = {}
                     record_data['id'] = record.headers.get('WARC-Record-ID')
                     record_data['uri'] = record.headers.get('WARC-Target-URI')
-                    record_data['file'] = record.headers.get('WARC-Filename')
-                    record_data['html'] = str(content, 'utf-8', 'ignore')
+                    record_data['file'] = "" #record.headers.get('WARC-Filename')
+                    record_data['html'] = "" #str(content, 'utf-8', 'ignore')
                     record_data['matches'] = []
 
                     #some text clearing
