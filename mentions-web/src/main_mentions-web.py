@@ -15,6 +15,7 @@ import using_nlp_model as unlp
 
 import utils
 
+
 '''
 
 #this function receives a directory that has warc files and loop throw them to extract the webpages they contain
@@ -115,6 +116,7 @@ def fast_extract_webpages_from_warc(warc_file_path, output_directory):
                     content_text = re.sub(' +', ' ', content_text)
                     # Split the extracted plain text into sentences
                     sentences = content_text.split('. ')
+
                     for sentence in sentences:
                         if len(sentence) > 30:
                             for pattern in patterns_re:
@@ -153,5 +155,3 @@ if __name__ == "__main__":
     start_time = time.time()
     fast_extract_webpages_from_warc(config.warc_dir, config.output_dir)
     print(f"finished in {time.time() - start_time} seconds")
-
-
