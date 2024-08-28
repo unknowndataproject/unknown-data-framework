@@ -1,4 +1,3 @@
-
 '''
 In this module
 first apply the heuristic input
@@ -14,130 +13,107 @@ from pathlib import Path
 import utils
 import heurstics_search as hs
 import using_nlp_model as unlp
-from time import perf_counter
 
 
-# Copy the entire directory tree from source to destination
-#directory_path = Path('/data/mentions/in_pdfs')
-#directory_path.mkdir()
+def main():
+    print("Start mentions-pdf")
+    config = init()
 
-
-shutil.copytree("/app/src/resources/data/in_pdfs", "/data/mentions/in_pdfs",dirs_exist_ok=True)
-
-directory_path = Path('/data/mentions/out_tei')
-directory_path.mkdir(exist_ok=True)
-
-directory_path = Path('/data/mentions/results')
-directory_path.mkdir(exist_ok=True)
-
-
-
-#load cofig dictionary
-config = utils.read_config("config.yaml")
-#create logger
-log_printer = utils.get_logger(config.log_file)
-
-
-
-batch_size = config.grobid_batch_size
-pdf_list = os.listdir(config.pdf_dir)
-destination_dir = config.grobid_pdf_dir
-
-processed_tei_files_list = []
-all_extration_results = []
-for i in range(0,len(pdf_list), batch_size): #math.ceil(len(pdf_list)/batch_size)+1):
-
-    log_printer(f"****************************Handling Batch {i}*****************************")
-    #take a batch of 10 pdfs
-    pdf_batch = pdf_list[i:i+batch_size]
-    
-    #copy pdf patch into pdf_dir
-    utils.copy_pdf_files(pdf_batch, config.pdf_dir,destination_dir)
-    #print("batch copied\n")
-    
-
-    #convert all pdfs in the pdf direcotry to tei files and store them in tei_directory
+    print("Create tei files")
     utils.convert_pdf_to_tei(config)
 
-    #keys is tei file name, value is a list of sentences extracted from that dictionary
+    print("Extract sentences")
+    tei_dict = get_sentences(config.tei_dir)
+
+    print("Select relevant sentences")
+    heu_selected_sents = select_relevant_sentences(tei_dict)
+
+    print("Prepare Sentences")
+    nlp_input = prepare_sentences(tei_dict, heu_selected_sents)
+
+    print("Apply NLP Model")
+    all_extration_results = apply_model_to_sentences(nlp_input, config)
+
+    print("Write Export")
+    # Write the list of objects to the JSON file
+    with open(config.results_in_json, "w") as json_file:
+        json.dump(all_extration_results, json_file, indent=4)
+
+
+def init():
+    shutil.copytree("/app/src/resources/data/in_pdfs", "/data/mentions/in_pdfs", dirs_exist_ok=True)
+
+    directory_path = Path('/data/mentions/out_tei')
+    directory_path.mkdir(exist_ok=True)
+
+    directory_path = Path('/data/mentions/results')
+    directory_path.mkdir(exist_ok=True)
+
+    config = utils.read_config("config.yaml")
+    
+    return config
+
+
+def get_sentences(tei_directory: str) -> dict:
+    """
+    Returns list of sentences for each teil file in given directory
+    """
     tei_dict = {}
-    #get sentences from tei files i
-    for tei_file in os.listdir(config.tei_dir):
-        #if the tei file is not processe it yet, add it to the list of processed files and process it
-        if tei_file not in processed_tei_files_list:
-            processed_tei_files_list.append(tei_file)
-        else:#if the file is already processed, skip it
-            continue
-        #to hadle only tei files
+    for tei_file in os.listdir(tei_directory):
         if str(tei_file)[-7:] != "tei.xml":
-            log_printer(f"{tei_file} is not a tei file")
             continue
 
-        #construc full path name to the tei file
-        full_path = os.path.join(config.tei_dir, tei_file)
-
-        #extract sentences from the tei file
+        full_path = os.path.join(tei_directory, tei_file)
         sentences = utils.get_sentences(full_path)
 
-        #build a dictionary with tei_file as key and its sentences as
         tei_dict[str(tei_file)]= sentences
+    return tei_dict
 
-    #########################################################################################
 
-
-    #apply heuristics and select setences
-    #log_printer(f"Applying heuristics... \n")
-    start_time = perf_counter()
-    heu_results = {}
+def select_relevant_sentences(tei_dict: dict):
+    """
+    apply heuristics and select setences
+    """
     heu_selected_sents = {}
-    sent_excluded_by_heuristics = {}
     for tei_file,sentences in tei_dict.items():
-        if tei_file  not in processed_tei_files_list:
-            continue
         _, matched_sent_ids = hs.search_patterns_in_tei_file(sentences)
         heu_selected_sents[tei_file] = matched_sent_ids
-    end_time = perf_counter()
-    #log_printer(f"Applying heuristics took: {end_time-start_time}\n")
-    #log_printer("***************************************\n")
+    return heu_selected_sents
 
 
-    #prepare sentences for nlp model by
+def prepare_sentences(tei_dict: dict, heu_selected_sents:dict):
+    """
+    prepare sentences for nlp model
+    """
     nlp_input = {}
     for tei_file,sentences in tei_dict.items():
-        if tei_file not in processed_tei_files_list:
-            continue
-        #load the sentences in which a heuristic pattern is found
         candidate_sentences = heu_selected_sents[tei_file]
         tmp_nlp_sents = []
         #create a new list of sentences that excludes the one to which a pattern is matched
         for sent in sentences:
-            if sent['idx']  in candidate_sentences:
+            if sent['idx'] in candidate_sentences:
                 tmp_nlp_sents.append(sent)
-        nlp_input[tei_file]=tmp_nlp_sents
+        nlp_input[tei_file] = tmp_nlp_sents
+    return nlp_input
 
-    #apply model on the sentences that was selected by heuristics
-    nlp_results = {}
-    for tei_file,sentences in nlp_input.items(): #tqdm(nlp_input.items(),total = len(nlp_input.items()), desc="processing: "):
+
+def apply_model_to_sentences(nlp_input, config):
+    all_extration_results = []
+    for tei_file,sentences in nlp_input.items():
         #skip files that do not have sentences selected by the heuristic
-        if tei_file  not in processed_tei_files_list or len(sentences)==0:
+        if len(sentences)==0:
             continue
         
-        log_printer(f"Dataset mentions found in file: {tei_file[:-8]}.pdf\n")
-        log_printer(f"Total number of sentences : {len(tei_dict[tei_file])}\n")
-        #log_printer("Number of sentences per file for which a known dataset was matched: ")
-        log_printer(f"Number of sentences selected by heuristics: {len(heu_selected_sents[tei_file])}\n")
-
-
         try:
             file_path = f"{config.extraction_dir}/{tei_file[:-8]}.txt"
 
-            f = open(file_path,"w",encoding="utf-8")
+            file = open(file_path,"w",encoding="utf-8")
 
-            for sent in sentences:
+            for sentence in sentences:
                 # this dictionary will contain all
                 file_extraction_result = {}
 
-                context = sent['text']
+                context = sentence['text']
 
                 #skip short contexts
                 if len(context)< config.short_context_length:
@@ -145,30 +121,23 @@ for i in range(0,len(pdf_list), batch_size): #math.ceil(len(pdf_list)/batch_size
 
                 #enable impossbile answers if the number of candidate sentences is less than a specific threshold
                 strict_extractor = False if len(sentences) < config.strict_threshold else True
-                prediction = unlp.get_model_preds_on_one_sentence(sent['text'],strict_extraction=strict_extractor)
+                prediction = unlp.get_model_preds_on_one_sentence(sentence['text'],strict_extraction=strict_extractor)
                 if prediction['start'] != prediction['end']:
-                    #utils.text_highligher(sent['text'],prediction['start'],prediction['end'],"RED")
                     #add extaction output to a dictionary
                     file_extraction_result["mentioned_in_paper"] = tei_file
-                    file_extraction_result["context_id"]= sent["idx"]
-                    file_extraction_result["dataset_context"]=sent["text"]
+                    file_extraction_result["context_id"] = sentence["idx"]
+                    file_extraction_result["dataset_context"]=sentence["text"]
                     file_extraction_result["mention_start"]=prediction["start"]
                     file_extraction_result["mention_end"] = prediction["end"]
                     #add the dictionary to the list of all results to be saved in json
                     all_extration_results.append(file_extraction_result)
-                    f.write("\n{},{},{},{}\n".format(sent["idx"],sent["text"],prediction["start"],prediction["end"]))
-                    log_printer("\n{},{},{},{},{}".format(tei_file,sent["idx"],sent["text"],prediction["start"],prediction["end"]))
-            log_printer("\n********************************************\n")
-            #print("\n****************************************************\n")
+                    
+                    file.write("\n{},{},{},{}\n".format(sentence["idx"],sentence["text"],prediction["start"],prediction["end"]))
         except Exception as e:
-            log_printer(e)
+            print(e)
 
-    #remove pdfs after handling them
-    utils.delete_pdf_files(pdf_batch,destination_dir)
-    #print("\nbatch files are deleted \n")
+    return all_extration_results
 
 
-
-# Write the list of objects to the JSON file
-with open(config.results_in_json, "w") as json_file:
-    json.dump(all_extration_results, json_file, indent=4)
+if __name__ == '__main__':
+    main()
