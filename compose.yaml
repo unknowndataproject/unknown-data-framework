@@ -22,9 +22,6 @@ services:
 
   grobid-service:
     image: grobid/grobid:0.8.0
-    ports:
-      - "8070:8070"
-      - "8071:8071"
     restart: "unless-stopped"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://grobid-service:8070/api/isalive"]
