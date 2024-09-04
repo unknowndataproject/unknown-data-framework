@@ -1,15 +1,16 @@
 FROM ubuntu:22.04
 
+ENV PIP_CACHE_DIR=/var/cache/buildkit/pip
+RUN mkdir -p $PIP_CACHE_DIR
+RUN rm -f /etc/apt/apt.conf.d/docker-clean
+RUN --mount=type=cache,target=/var/cache/apt \
+	apt-get update && apt-get install -yqq --no-install-recommends \
+	python3 python3-pip git && rm -rf /var/lib/apt/lists/*
+
 # Changes working directory to `/app` within docker image
 WORKDIR /app
 # VOLUME /app
 
-# Installs python3
-RUN apt update && \
-    apt install -y git 
-    
-RUN apt install -y python3 
-RUN apt install -y python3-pip
 # RUN git clone  --depth=1 git://github.com/pyenv/pyenv.git .pyenv
 # ENV PYENV_ROOT /app/.pyenv
 # ENV PATH $PYENV_ROOT/shims:/$PYENV_ROOT/bin:$PATH
@@ -20,7 +21,7 @@ RUN apt install -y python3-pip
 
 # Install dependencies:
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN python3 -m pip install --cache-dir $PIP_CACHE_DIR -r requirements.txt
 
 # download spacy model 
 RUN python3 -m spacy download en_core_web_md
