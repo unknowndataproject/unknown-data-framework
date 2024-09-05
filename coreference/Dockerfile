@@ -21,7 +21,7 @@ WORKDIR /app
 
 # Install dependencies:
 COPY requirements.txt .
-RUN python3 -m pip install --cache-dir $PIP_CACHE_DIR -r requirements.txt
+RUN --mount=type=cache,target=$PIP_CACHE_DIR python3 -m pip install --cache-dir $PIP_CACHE_DIR -r requirements.txt
 
 # download spacy model 
 RUN python3 -m spacy download en_core_web_md
