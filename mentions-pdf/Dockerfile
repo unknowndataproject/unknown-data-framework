@@ -15,7 +15,6 @@ COPY requirements.txt .
 RUN python3 -m pip install --cache-dir $PIP_CACHE_DIR -r requirements.txt
 
 COPY src/config.yaml .
-COPY src/grobid_client_python/ ./grobid_client_python
 
 # Copies everything in the local folder `./mentions/` into the container folder `/app`
 COPY . .

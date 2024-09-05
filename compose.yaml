@@ -1,6 +1,8 @@
 services:
   crawler:
     build: ./crawler/
+    environment:
+      - PYTHONUNBUFFERED=1
     volumes:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
@@ -10,6 +12,8 @@ services:
 
   mentions-web:
     build: ./mentions-web/
+    environment:
+      - PYTHONUNBUFFERED=1
     volumes:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
@@ -31,6 +35,8 @@ services:
 
   mentions-pdf:
     build: ./mentions-pdf/
+    environment:
+      - PYTHONUNBUFFERED=1
     volumes:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
@@ -43,6 +49,8 @@ services:
 
   coreference:
     build: ./coreference/
+    environment:
+      - PYTHONUNBUFFERED=1
     volumes:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
@@ -57,6 +65,8 @@ services:
 
   dblp-export:
     build: ./dblp-export/
+    environment:
+      - PYTHONUNBUFFERED=1
     volumes:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
@@ -69,6 +79,8 @@ services:
 
   gesis-export:
     build: ./gesis-export/
+    environment:
+      - PYTHONUNBUFFERED=1
     volumes:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
