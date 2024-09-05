@@ -46,6 +46,8 @@ services:
     depends_on:
       grobid-service:
         condition: service_healthy
+      mentions-web:
+        condition: service_started
 
   coreference:
     build: ./coreference/
