@@ -1,4 +1,5 @@
 import pandas as pd
+from pprint import pprint
 import spacy
 
 nlp = spacy.load('en_core_web_md')
@@ -21,20 +22,32 @@ def dataset_linking(extraction_input, dataset_df):
         mis_cnt = 0
         for ee in extraction_input:
             matched = False
-            # filter candidate mentions
-
-
+            # get mention info
+            mention_start, mention_end = ee['mention_start'], ee['mention_end']
+            dataset_mention = ee['dataset_context'][mention_start:mention_end]
+            dataset_mention = dataset_mention.strip()
+            # pprint(dataset_mention)
             candid_ents = []
-            for idx, (dataset_name, dataset_homepage, dataset_date) in enumerate(zip(dataset_df['name'], dataset_df['homepage'],dataset_df['introduced_date'])):
-                # find candidates
-                mention_start, mention_end = ee['mention_start'], ee['mention_end']
-                dataset_mention = ee['dataset_context'][mention_start:mention_end]
+            
+            for idx, dataset in dataset_df.iterrows():
+                # get dataset info
+                dataset_name, dataset_homepage, dataset_date = dataset['name'], dataset['homepage'], dataset['introduced_date']
+
+                if dataset_name == dataset_mention: 
+                    candid_ents.append({'name': dataset_name, 'homepage': dataset_homepage, 'score': 1.0})
+                    break
                 if dataset_name.lower() in dataset_mention.lower():
                     score = nlp(dataset_name.lower()).similarity(nlp(dataset_mention.lower()))
                     # print('score: ', score)
                     candid_ents.append({'name':dataset_name, 'homepage': dataset_homepage, 'score': score})
+                elif dataset_mention.lower() in dataset_name.lower():
+                    score = nlp(dataset_name.lower()).similarity(nlp(dataset_mention.lower()))
+                    print('Dataset name: ', dataset_name, ', score: ', score)
+                    # candid_ents.append({'name':dataset_name, 'homepage': dataset_homepage, 'score': score})
                 else:
-                    continue
+                    pass
+                    # print(f'No match: {dataset_name} ||| {dataset_mention}')
+                    
             
             # rank and match 
             if len(candid_ents) > 0:
@@ -43,7 +56,7 @@ def dataset_linking(extraction_input, dataset_df):
                 if score > 0.5:
                     matched = True
                     cnt += 1
-                    print('Found a match {}:\n\tEntity from database: {}\n\tMatched mention: {}\n\tContext: {}'.format(score, dataset_name, dataset_mention, ee['dataset_context']))
+                    # print('Found a match {}:\n\tEntity from database: {}\n\tMatched mention: {}\n\tContext: {}'.format(score, dataset_name, dataset_mention, ee['dataset_context']))
                     res[cnt] = {
                     'dataset_entity':dataset_name, 
                     'dataset_homepage': dataset_homepage,
@@ -54,12 +67,12 @@ def dataset_linking(extraction_input, dataset_df):
                     'mentioned_in_paper': ee['mentioned_in_paper'], 
                     }
             if not matched:
-                print('Miss a mention:', dataset_mention,'\nContext:', ee['dataset_context'], '\n')
+                # print('Miss a mention:', dataset_mention,'\nContext:', ee['dataset_context'], '\n')
                 missed[mis_cnt] = {'missed_mention': dataset_mention}
                 mis_cnt += 1
                 pass
 
-        print(cnt)
+        # print(cnt)
         return res, missed
     except Exception as e:
         raise e

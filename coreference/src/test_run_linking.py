@@ -1,5 +1,5 @@
 from entity_linking import dataset_linking
-from database_access import read_dataset_metadata_from_file
+from database_access import read_dataset_metadata_from_file, read_gesis_dataset_json_gz
 import gzip
 import json
 from pathlib import Path
@@ -10,6 +10,12 @@ def read_json(filepath):
     with open(filepath, 'r') as fr:
         d = json.load(fr)
     return d
+
+
+def read_json_gz(filepath, encoding='utf-8'):
+    with gzip.open(filepath, 'r') as fin:
+        data = json.loads(fin.read().decode(encoding))
+    return data
 
 def read_jsonl_gz(filepath):
     res = []
@@ -39,12 +45,14 @@ def read_tsv2dict(filepath):
     return res_dict
 
 def run_test_entity_linking():
+    ## read dataset mention from WP3
     dataset_mention_metadata_dir = '/data/mentions/' 
     pdf_mention_file = 'pdfs_extraction.json'
 
     dataset_mention_metadata_file = '/app/data/sample3_dataset_mention_metadata.json'
     paper_id_mapping_file = '/app/data/sample_3_paper_id_mapping.tsv'
     extra_dataset_metadata_file = '/app/data/matched_dataset_paper_metadata.json'
+    gesis_dataset_metadata_file = '/app/data/gesis_search_datasets_19042024.json.gz'
     # for f in os.listdir(dataset_mention_metadata_dir):
     #     if os.path.isfile(os.path.join(dataset_mention_metadata_dir, f)):
     #         extraction_res = read_extract_csv(os.path.join(dataset_mention_metadata_dir, f))
@@ -53,17 +61,15 @@ def run_test_entity_linking():
     """
     Link to pdf mentions
     """
+    print('Start entity linking for mentions from PDF')
     all_mentions_metadata = read_json(Path(dataset_mention_metadata_dir).joinpath(pdf_mention_file))
     extraction_res = all_mentions_metadata[:]
-    # print(len(extraction_res))
     metadata_db = read_dataset_metadata_from_file('/app/data/datasets.json.gz')
     extra_metadata_db = read_json(extra_dataset_metadata_file)
     extra_metadata_dict = { e['dataset_name']: {k: v if not k =='paper_authors' else [{'author_name': author} for author in v] for k,v in e.items()} for e in extra_metadata_db}
-
+    gesis_db = read_gesis_dataset_json_gz(gesis_dataset_metadata_file, encoding='utf-8')
     linked_res, missed_mentions_pdf = dataset_linking(extraction_res, metadata_db)
-    pprint(missed_mentions_pdf)
     paper_id_mapping = read_tsv2dict(paper_id_mapping_file)
-    # print(paper_id_mapping) 
     linked_res = {k: {kk:vv if not kk=='mentioned_in_paper'  else vv for kk, vv in v.items()} for k,v in linked_res.items()}
     
     for k,v in linked_res.items():
@@ -75,6 +81,7 @@ def run_test_entity_linking():
             linked_res[k]['dataset_introduced_date'] = _metadata['paper_date']
             linked_res[k]['metadata_creator'] = 'UnknownData'
             linked_res[k]['metadata_external_source'] = ['PapersWithCode Data Dump']
+    print('Finish linking and output results to pdf_output.json')
     with open('/data/coreference/pdf_output.json', 'w') as fw:
         json.dump(linked_res, fw, indent=4)
 
@@ -82,6 +89,7 @@ def run_test_entity_linking():
     """
     Link to web mentions
     """
+    print('Start entity linking for mentions from web pages')
     web_mention_file = 'web-mentions/00000.gz'
     web_mention_metadata = read_jsonl_gz(Path(dataset_mention_metadata_dir).joinpath(web_mention_file))
     # pprint(web_mention_metadata)
@@ -94,11 +102,10 @@ def run_test_entity_linking():
                                        'mention_end': m[-1]})
     # pprint(formated_web_mention_metadata)
     linked_web_res, missed_mentions_web = dataset_linking(formated_web_mention_metadata, metadata_db)
-    pprint(missed_mentions_web)
+    # pprint(missed_mentions_web)
+    print('Finish entity linking and output results to web_output.json')
     with open('/data/coreference/web_output.json', 'w') as fw:
         json.dump(linked_web_res, fw, indent=4)
     return linked_res
 
-# print(os.getcwd())
-# print(os.listdir(os.getcwd()))
 run_test_entity_linking()
