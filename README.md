@@ -1,5 +1,9 @@
 # UnknownData Framework
 
+The goal of the UnkownData Framework is to scrape the internet to find metadata for scientifically relevant data publications. For this, a [targeted crawl](crawler/README.md) is performed, [dataset mentions](mentions-web/README.md) are extracted, [coreferences](coreference/README.md) are detected, and the [results are analysed](dblp-export/README.md). 
+
+This framework is a prototype and was developed as part of the [UnkownData project](https://unknowndataproject.github.io/).
+
 
 ## Requirements 
 * Docker. The simplest way to install docker is to install [Docker Desktop](https://docs.docker.com/desktop/)
