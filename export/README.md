@@ -5,7 +5,7 @@ It identifies the most used hosts of datasets based on the previously gathered d
 
 ## Overview 
 
-This model uses the output of the coreference model to identify hosts of datasets. The hosts are descending ordered by the number of detected related datasets. The results are exported into a CSV file that contains as columns the link to the host, the number of related identified datasets, and five links to datasets from that host.
+This module uses the output of the coreference model to identify hosts of datasets. The hosts are descending ordered by the number of detected related datasets. The results are exported into a CSV file that contains as columns the link to the host, the number of related identified datasets, and five links to datasets from that host.
 
 ## Setup 
 
