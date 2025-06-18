@@ -15,7 +15,7 @@ COPY requirements.txt .
 
 RUN --mount=type=cache,target=$PIP_CACHE_DIR python3 -m pip install --cache-dir $PIP_CACHE_DIR -r requirements.txt
 
-# Copies everything in the local folder `./dblp-export/` into the container folder `/app`
+# Copies everything in the local folder `./export/` into the container folder `/app`
 COPY . . 
 
-CMD ["python3", "./src/dblp-revelant-hosts.py"]
+CMD ["python3", "./src/revelant-hosts.py"]

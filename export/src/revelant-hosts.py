@@ -12,7 +12,7 @@ from urllib.parse import urlparse
 
 
 INPUT_FILE = '/data/coreference/pdf_output.json'
-OUTPUT_FILE = '/data/dblp-export/most-relevant-hosts.csv'
+OUTPUT_FILE = '/data/export/most-relevant-hosts.csv'
 
 
 def main():
