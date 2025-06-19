@@ -1,13 +1,21 @@
 # Mentions PDF
 
-
-High level overview, one or two sentences
-
+This component is responsible for extracting dataset mentions from the text. The text here consists of sentences extracted from scientific papers in PDF format.
 ## Overview 
 
-Descibe in more detail what is happending in this component. 
-Feel free to elaborate, but don't feel obligated to be overly verbose 
+This extraction component involves three steps:
+
+1. **Extract sentences from PDFs using GROBID.**
+
+2. **Use heuristic rules to select sentences that might contain dataset mentions based on a set of keywords.**
+
+3. **Employ DeBERTa in question-answering mode**, as detailed in this [paper](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10231147), to carry out the actual extraction of the candidate sentences passed from step 2.
+
 
 ## Setup 
 
-Describe how this component can be controled through options, seed lists, or similar. 
+Here are some of the parameters that can be changed:
+
+- The heuristic rules that are used to filter the sentences in step 2 can be modified in `"mentions-pdf/src/using_nlp_model.py"`
+
+- The question to be used in DeBERTa can be changed in `"mentions-pdf/src/using_nlp_model.py"`
