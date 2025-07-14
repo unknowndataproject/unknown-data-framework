@@ -1,13 +1,9 @@
 # Coreference
 
-High level overview, one or two sentences
+This component links the dataset mentions from PDF and the web output to two external dataset knowledge bases based on PapersWithCode dataset and GESIS Search dataset corpus.
 
 ## Overview 
 
-Descibe in more detail what is happending in this component. 
-Feel free to elaborate, but don't feel obligated to be overly verbose 
+The linking involves a score function calculation phase and a ranking and selection phase. For each of the dataset mention from a context, we either find a string string matching result with 1.0 matching score, or calculate the cosine similarity value as the matching score with each of the candidate dataset entity name. We rerank all the candidate dataset entities based on this matching score and pick the entity with a score above a minimum threshold and the highest value as the matched dataset entity for the dataset mention. For all the dataset mentions that can be matched based on this strategy, we output the results accordingly. 
 
-## Setup 
-
-Describe how this component can be controled through options, seed lists, or similar. 
 
