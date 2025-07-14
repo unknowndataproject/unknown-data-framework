@@ -7,6 +7,7 @@ RUN --mount=type=cache,target=/var/cache/apt \
 	apt-get update && apt-get install -yqq --no-install-recommends \
 	python3 python3-pip && rm -rf /var/lib/apt/lists/*
 
+
 # Changes working directory to `/app` within docker image
 WORKDIR /app
 
@@ -14,9 +15,7 @@ COPY requirements.txt .
 
 RUN --mount=type=cache,target=$PIP_CACHE_DIR python3 -m pip install --cache-dir $PIP_CACHE_DIR -r requirements.txt
 
-COPY src/config.yaml .
+# Copies everything in the local folder `./export/` into the container folder `/app`
+COPY . . 
 
-# Copies everything in the local folder `./mentions/` into the container folder `/app`
-COPY . .
-
-CMD ["python3", "./src/main_mentions-pdf.py"]
+CMD ["python3", "./src/revelant-hosts.py"]

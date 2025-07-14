@@ -7,8 +7,7 @@ services:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
       - ./data/coreference:/data/coreference
-      - ./data/dblp-export:/data/dblp-export
-      - ./data/gesis-export:/data/gesis-export
+      - ./data/export:/data/export
 
   mentions-web:
     build: ./mentions-web/
@@ -18,8 +17,7 @@ services:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
       - ./data/coreference:/data/coreference
-      - ./data/dblp-export:/data/dblp-export
-      - ./data/gesis-export:/data/gesis-export
+      - ./data/export:/data/export
     depends_on:
       crawler:
         condition: service_completed_successfully
@@ -41,11 +39,12 @@ services:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
       - ./data/coreference:/data/coreference
-      - ./data/dblp-export:/data/dblp-export
-      - ./data/gesis-export:/data/gesis-export
+      - ./data/export:/data/export
     depends_on:
       grobid-service:
         condition: service_healthy
+      mentions-web:
+        condition: service_started
 
   coreference:
     build: ./coreference/
@@ -55,37 +54,22 @@ services:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
       - ./data/coreference:/data/coreference
-      - ./data/dblp-export:/data/dblp-export
-      - ./data/gesis-export:/data/gesis-export
+      - ./data/export:/data/export
     depends_on:
       mentions-web:
         condition: service_completed_successfully
       mentions-pdf:
         condition: service_completed_successfully
 
-  dblp-export:
-    build: ./dblp-export/
+  export:
+    build: ./export/
     environment:
       - PYTHONUNBUFFERED=1
     volumes:
       - ./data/crawler:/data/crawler
       - ./data/mentions:/data/mentions
       - ./data/coreference:/data/coreference
-      - ./data/dblp-export:/data/dblp-export
-      - ./data/gesis-export:/data/gesis-export
-    depends_on:
-      coreference:
-        condition: service_completed_successfully
-
-  gesis-export:
-    build: ./gesis-export/
-    environment:
-      - PYTHONUNBUFFERED=1
-    volumes:
-      - ./data/crawler:/data/crawler
-      - ./data/mentions:/data/mentions
-      - ./data/dblp-export:/data/dblp-export
-      - ./data/gesis-export:/data/gesis-export
+      - ./data/export:/data/export
     depends_on:
       coreference:
         condition: service_completed_successfully

@@ -1,5 +1,9 @@
 # UnknownData Framework
 
+The goal of the UnkownData Framework is to scrape the internet to find metadata for scientifically relevant data publications. For this, a [targeted crawl](crawler/README.md) is performed, [dataset mentions](mentions-web/README.md) are extracted, [coreferences](coreference/README.md) are detected, and the [results are analysed](export/README.md). 
+
+This framework is a prototype and was developed as part of the [UnkownData project](https://unknowndataproject.github.io/).
+
 
 ## Requirements 
 * Docker. The simplest way to install docker is to install [Docker Desktop](https://docs.docker.com/desktop/)
@@ -19,8 +23,7 @@ The following folders are mounted in each docker container and can be used to sh
 | `[REPO]/data/crawler/`      | `/data/crawler/`       |
 | `[REPO]/data/mentions/`    | `/data/mentions/`     |
 | `[REPO]/data/coreference/` | `/data/coreference/`  |
-| `[REPO]/data/dblp-export/` | `/data/dblp-export/`  |
-| `[REPO]/data/gesis-export/` | `/data/gesis-export/`  |
+| `[REPO]/data/export/` | `/data/export/`  |
 
 
 ## How to Run
@@ -33,10 +36,10 @@ If you want to run the whole pipeline, use the following command from within the
 docker compose up --build
 ```
 
-That command will run all components in the order `crawler` -> `mentions` -> `coreference` -> (`dblp-export` & `gesis-export`). Each component will only start to run when the previous one finished successfully. 
+That command will run all components in the order `crawler` -> `mentions-web` -> `coreference` -> `export`. Each component will only start to run when the previous one finished successfully. 
 
 ### Only One Component
-If you only want to run one component of the pipeline, use the following command from within the project root folder and replace `[COMPONENT]` by the desired component name (`crawler`, `mentions`, `coreference`, `dblp-export`, `gesis-export`). The `--no-deps` flag ensures that the upstream dependent containers are not executed before the choosen component. Instead only the choosen component is run.  
+If you only want to run one component of the pipeline, use the following command from within the project root folder and replace `[COMPONENT]` by the desired component name (`crawler`, `mentions-web`, `mentions-pdf`, `coreference`, `export`). The `--no-deps` flag ensures that the upstream dependent containers are not executed before the choosen component. Instead only the choosen component is run.  
 
 ```bash
 docker compose up --build --no-deps [COMPONENT]
