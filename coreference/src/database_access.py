@@ -32,17 +32,17 @@ def read_gesis_dataset_json_gz(filepath, encoding='utf-8'):
         data = json.loads(fin.read().decode(encoding))
     
     data = data['hits']['hits']
-    pprint(data[0])
-    print(data[0]['_source'].keys())
+    # pprint(data[0])
+    # print(data[0]['_source'].keys())
     data = [{'_id': record['_id']} | {k:v for k,v in record['_source'].items() if k in ['doi','title_info', 'locations', 'collection_info','content_info', 'date']} for record in data]
-    print(data[0]['date'])
+    # print(data[0]['date'])
     mapped_data = []
     for e in data:
         _e = {}
         for k,v in e.items():
             try:
                 if k == 'title_info':
-                    _e["dataset_name"] = v["title"]
+                    _e["name"] = v["title"]
                 elif k == "content_info":
                     if "content" in v: 
                         _e["description"] = v["content"]
@@ -67,7 +67,7 @@ def read_gesis_dataset_json_gz(filepath, encoding='utf-8'):
                 print(v)
                 raise e
         mapped_data.append(_e)
-
-    return mapped_data
+    df = pd.DataFrame.from_records(mapped_data)
+    return df
 
 # read_dataset_metadata_from_file('./data/datasets.json.gz')

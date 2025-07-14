@@ -68,7 +68,8 @@ def run_test_entity_linking():
     extra_metadata_db = read_json(extra_dataset_metadata_file)
     extra_metadata_dict = { e['dataset_name']: {k: v if not k =='paper_authors' else [{'author_name': author} for author in v] for k,v in e.items()} for e in extra_metadata_db}
     gesis_db = read_gesis_dataset_json_gz(gesis_dataset_metadata_file, encoding='utf-8')
-    linked_res, missed_mentions_pdf = dataset_linking(extraction_res, metadata_db)
+    # pprint(gesis_db[:3])
+    linked_res, missed_mentions_pdf = dataset_linking(extraction_res, [gesis_db, metadata_db])
     paper_id_mapping = read_tsv2dict(paper_id_mapping_file)
     linked_res = {k: {kk:vv if not kk=='mentioned_in_paper'  else vv for kk, vv in v.items()} for k,v in linked_res.items()}
     
@@ -82,6 +83,7 @@ def run_test_entity_linking():
             linked_res[k]['metadata_creator'] = 'UnknownData'
             linked_res[k]['metadata_external_source'] = ['PapersWithCode Data Dump']
     print('Finish linking and output results to pdf_output.json')
+    print(len(linked_res))
     with open('/data/coreference/pdf_output.json', 'w') as fw:
         json.dump(linked_res, fw, indent=4)
 
@@ -101,8 +103,9 @@ def run_test_entity_linking():
                                        'mention_start': m[-2], 
                                        'mention_end': m[-1]})
     # pprint(formated_web_mention_metadata)
-    linked_web_res, missed_mentions_web = dataset_linking(formated_web_mention_metadata, metadata_db)
+    linked_web_res, missed_mentions_web = dataset_linking(formated_web_mention_metadata, [gesis_db, metadata_db])
     # pprint(missed_mentions_web)
+    print(len(linked_web_res))
     print('Finish entity linking and output results to web_output.json')
     with open('/data/coreference/web_output.json', 'w') as fw:
         json.dump(linked_web_res, fw, indent=4)
